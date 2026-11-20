@@ -1,0 +1,25 @@
+{
+    "name": "GameKit.Runtime",
+    "rootNamespace": "GameKit",
+    "references": [
+        "Unity.TextMeshPro",
+        "UnityEngine.UI",
+        "DOTween.Modules",
+        "UniTask",
+        "UniTask.DOTween",
+        "UniTask.Addressables",
+        "UniTask.TextMeshPro",
+        "Unity.Addressables",
+        "Unity.ResourceManager",
+        "StompyRobot.SRDebugger"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -136,3 +136,11 @@ crashlytics-build.properties
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# Rider
+.idea/
+
+# Multi-session workflow (shared via directory junctions, not versioned)
+/.claude
+/.docs
+/.role
