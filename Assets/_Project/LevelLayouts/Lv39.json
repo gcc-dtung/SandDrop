@@ -1,0 +1,4038 @@
+{
+  "level": "Lv39",
+  "colors": [
+    {
+      "index": 0,
+      "count": 24,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "count": 18,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "count": 15,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "count": 15,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "count": 15,
+      "color": {
+        "r": 0.23529412,
+        "g": 0.23529412,
+        "b": 0.23529412,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 5,
+      "count": 12,
+      "color": {
+        "r": 0.52156866,
+        "g": 0.78431374,
+        "b": 0.09411765,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 6,
+      "count": 9,
+      "color": {
+        "r": 0.9019608,
+        "g": 0.9019608,
+        "b": 0.9019608,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 7,
+      "count": 9,
+      "color": {
+        "r": 0.9411765,
+        "g": 0.5137255,
+        "b": 0.0,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 8,
+      "count": 9,
+      "color": {
+        "r": 0.9529412,
+        "g": 0.8039216,
+        "b": 0.0,
+        "a": 1.0
+      }
+    }
+  ],
+  "meshes": [
+    "LevelRes/Lv39/Models/Hide_002.asset",
+    "LevelRes/Lv39/Models/Hide_003.asset",
+    "LevelRes/Lv39/Models/Hide_005.asset",
+    "LevelRes/Lv39/Models/Hide_004.asset",
+    "LevelRes/Lv39/Models/Hide_025.asset",
+    "LevelRes/Lv39/Models/Hide_027.asset",
+    "LevelRes/Lv39/Models/Hide_020.asset",
+    "LevelRes/Lv39/Models/Hide_014.asset",
+    "LevelRes/Lv39/Models/Hide_015.asset",
+    "LevelRes/Lv39/Models/Hide_012.asset",
+    "LevelRes/Lv39/Models/Hide_013.asset",
+    "LevelRes/Lv39/Models/Hide_018.asset",
+    "LevelRes/Lv39/Models/Show_005.asset",
+    "LevelRes/Lv39/Models/Show_004.asset",
+    "LevelRes/Lv39/Models/Show_014.asset",
+    "LevelRes/Lv39/Models/Hide_019.asset",
+    "LevelRes/Lv39/Models/Hide_022.asset",
+    "LevelRes/Lv39/Models/Show_017.asset",
+    "LevelRes/Lv39/Models/Show_020.asset",
+    "LevelRes/Lv39/Models/Hide_001.asset",
+    "LevelRes/Lv39/Models/Show_002.asset",
+    "LevelRes/Lv39/Models/Show_022.asset",
+    "LevelRes/Lv39/Models/Show_015.asset",
+    "LevelRes/Lv39/Models/Show_011.asset",
+    "LevelRes/Lv39/Models/Show_007.asset",
+    "LevelRes/Lv39/Models/Show_019.asset",
+    "LevelRes/Lv39/Models/Show_021.asset",
+    "LevelRes/Lv39/Models/Show_23.asset",
+    "LevelRes/Lv39/Models/Show_010.asset",
+    "LevelRes/Lv39/Models/Show_016.asset",
+    "LevelRes/Lv39/Models/Show_018.asset",
+    "LevelRes/Lv39/Models/Show_008.asset",
+    "LevelRes/Lv39/Models/Show_012.asset",
+    "LevelRes/Lv39/Models/Show_013.asset",
+    "LevelRes/Lv39/Models/Decorate_003.asset",
+    "LevelRes/Lv39/Models/Hide_023.asset",
+    "LevelRes/Lv39/Models/Hide_024.asset",
+    "LevelRes/Lv39/Models/Decorate_001.asset",
+    "LevelRes/Lv39/Models/Hide_011.asset",
+    "LevelRes/Lv39/Models/Hide_010.asset",
+    "LevelRes/Lv39/Models/Hide_008.asset",
+    "LevelRes/Lv39/Models/Hide_009.asset",
+    "LevelRes/Lv39/Models/Decorate_002.asset",
+    "LevelRes/Lv39/Models/Hide_021.asset",
+    "LevelRes/Lv39/Models/Hide_017.asset",
+    "LevelRes/Lv39/Models/Hide_006.asset",
+    "LevelRes/Lv39/Models/Hide_007.asset",
+    "LevelRes/Lv39/Models/Show_2_0.90.asset",
+    "LevelRes/Lv39/Models/Show_001.asset"
+  ],
+  "parts": [
+    {
+      "id": 0,
+      "meshIndex": 0,
+      "meshPath": "LevelRes/Lv39/Models/Hide_002.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.4832075,
+        "y": 0.73268265,
+        "z": 0.8779018
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 1,
+      "meshIndex": 1,
+      "meshPath": "LevelRes/Lv39/Models/Hide_003.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.48345175,
+        "y": 0.7326824,
+        "z": 0.87790215
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 2,
+      "meshIndex": 2,
+      "meshPath": "LevelRes/Lv39/Models/Hide_005.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.4835098,
+        "y": -0.23849544,
+        "z": 0.91755414
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 3,
+      "meshIndex": 3,
+      "meshPath": "LevelRes/Lv39/Models/Hide_004.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.48375422,
+        "y": -0.23849544,
+        "z": 0.9175547
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 4,
+      "meshIndex": 4,
+      "meshPath": "LevelRes/Lv39/Models/Hide_025.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.33332,
+        "y": 0.03600266,
+        "z": -0.66660666
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 5,
+      "meshIndex": 5,
+      "meshPath": "LevelRes/Lv39/Models/Hide_027.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.3333201,
+        "y": 0.03600256,
+        "z": -0.666607
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 6,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv39/Models/Hide_020.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.0328052,
+        "y": -1.5942769,
+        "z": -1.1528927
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 7,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv39/Models/Hide_020.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.531,
+        "y": -1.6326861,
+        "z": 1.8310051
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 8,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv39/Models/Hide_020.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.531,
+        "y": -1.6326861,
+        "z": 1.8210069
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 179.99966,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 9,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv39/Models/Hide_020.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.032806,
+        "y": -1.5942764,
+        "z": -1.152892
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 179.99995,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 10,
+      "meshIndex": 7,
+      "meshPath": "LevelRes/Lv39/Models/Hide_014.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.93702495,
+        "y": 0.65411717,
+        "z": 0.6046809
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 11,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv39/Models/Hide_015.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.0363067,
+        "y": 0.68763083,
+        "z": -0.5462777
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 12,
+      "meshIndex": 9,
+      "meshPath": "LevelRes/Lv39/Models/Hide_012.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.0363076,
+        "y": 0.68763083,
+        "z": -0.5462777
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 13,
+      "meshIndex": 10,
+      "meshPath": "LevelRes/Lv39/Models/Hide_013.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.9370252,
+        "y": 0.65411705,
+        "z": 0.6046809
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 14,
+      "meshIndex": 11,
+      "meshPath": "LevelRes/Lv39/Models/Hide_018.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.4466096,
+        "y": -1.59,
+        "z": -1.17
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 179.99995,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 15,
+      "meshIndex": 11,
+      "meshPath": "LevelRes/Lv39/Models/Hide_018.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.49019608,
+        "g": 0.2627451,
+        "b": 0.20784314,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.4466087,
+        "y": -1.5942769,
+        "z": -1.1528925
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 16,
+      "meshIndex": 12,
+      "meshPath": "LevelRes/Lv39/Models/Show_005.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 1.3741199,
+        "z": 0.32538977
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 17,
+      "meshIndex": 12,
+      "meshPath": "LevelRes/Lv39/Models/Show_005.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 16
+    },
+    {
+      "id": 18,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv39/Models/Show_004.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 1.3809181,
+        "z": -0.49309868
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 19,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv39/Models/Show_004.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 18
+    },
+    {
+      "id": 20,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv39/Models/Show_014.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.55,
+        "y": 0.557,
+        "z": -0.69
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 21,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv39/Models/Show_014.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 20
+    },
+    {
+      "id": 22,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv39/Models/Show_014.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.5879924,
+        "y": 0.567,
+        "z": -0.68
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 23,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv39/Models/Show_014.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 22
+    },
+    {
+      "id": 24,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.23529412,
+        "g": 0.23529412,
+        "b": 0.23529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.8476532,
+        "y": -1.5942775,
+        "z": -1.1528924
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 25,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 24
+    },
+    {
+      "id": 26,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 25
+    },
+    {
+      "id": 27,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.23529412,
+        "g": 0.23529412,
+        "b": 0.23529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.3294842,
+        "y": -1.6302003,
+        "z": 1.8323056
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 28,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 27
+    },
+    {
+      "id": 29,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 28
+    },
+    {
+      "id": 30,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.23529412,
+        "g": 0.23529412,
+        "b": 0.23529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.321,
+        "y": -1.6302003,
+        "z": 1.8323056
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 180.00034,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 31,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 30
+    },
+    {
+      "id": 32,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv39/Models/Hide_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 31
+    },
+    {
+      "id": 33,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.23529412,
+        "g": 0.23529412,
+        "b": 0.23529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.847654,
+        "y": -1.594277,
+        "z": -1.1528922
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 179.99995,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 34,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 33
+    },
+    {
+      "id": 35,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv39/Models/Hide_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 34
+    },
+    {
+      "id": 36,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv39/Models/Show_017.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.7150894,
+        "y": 1.0097837,
+        "z": 2.585646
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 37,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv39/Models/Show_017.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 36
+    },
+    {
+      "id": 38,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv39/Models/Show_017.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 37
+    },
+    {
+      "id": 39,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv39/Models/Show_020.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.71508926,
+        "y": 1.0097914,
+        "z": 2.585646
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 40,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv39/Models/Show_020.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 39
+    },
+    {
+      "id": 41,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv39/Models/Show_020.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 40
+    },
+    {
+      "id": 42,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": 6,
+      "color": {
+        "r": 0.9019608,
+        "g": 0.9019608,
+        "b": 0.9019608,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.00011513,
+        "y": 1.0272,
+        "z": -3.0758
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 245.33803,
+        "z": 103.54
+      },
+      "materialIndex": 1,
+      "group": -1
+    },
+    {
+      "id": 43,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 42
+    },
+    {
+      "id": 44,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 43
+    },
+    {
+      "id": 45,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 44
+    },
+    {
+      "id": 46,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": 6,
+      "color": {
+        "r": 0.9019608,
+        "g": 0.9019608,
+        "b": 0.9019608,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.89738,
+        "y": -0.52687,
+        "z": -3.0758
+      },
+      "eulerAngles": {
+        "x": 30.00005,
+        "y": 90.0,
+        "z": 270.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 245.33803,
+        "z": 103.54
+      },
+      "materialIndex": 1,
+      "group": -1
+    },
+    {
+      "id": 47,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 46
+    },
+    {
+      "id": 48,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 47
+    },
+    {
+      "id": 49,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 48
+    },
+    {
+      "id": 50,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": 6,
+      "color": {
+        "r": 0.9019608,
+        "g": 0.9019608,
+        "b": 0.9019608,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.90413,
+        "y": -0.52976,
+        "z": -3.0758
+      },
+      "eulerAngles": {
+        "x": 30.87335,
+        "y": 270.0,
+        "z": 90.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 245.33803,
+        "z": 103.54
+      },
+      "materialIndex": 1,
+      "group": -1
+    },
+    {
+      "id": 51,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 50
+    },
+    {
+      "id": 52,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 51
+    },
+    {
+      "id": 53,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv39/Models/Hide_001.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 1,
+      "group": 52
+    },
+    {
+      "id": 54,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv39/Models/Show_002.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.00011475,
+        "y": -0.0088305,
+        "z": -3.0293
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 55,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv39/Models/Show_002.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 54
+    },
+    {
+      "id": 56,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv39/Models/Show_002.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 55
+    },
+    {
+      "id": 57,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv39/Models/Show_002.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 56
+    },
+    {
+      "id": 58,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.44875,
+        "y": 0.43981,
+        "z": -2.371
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 59,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 58
+    },
+    {
+      "id": 60,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 59
+    },
+    {
+      "id": 61,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 60
+    },
+    {
+      "id": 62,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv39/Models/Show_015.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9137255,
+        "g": 0.6117647,
+        "b": 0.7921569,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.011855826,
+        "y": 1.6478921,
+        "z": 2.5032942
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 63,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv39/Models/Show_015.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 62
+    },
+    {
+      "id": 64,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv39/Models/Show_015.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 63
+    },
+    {
+      "id": 65,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv39/Models/Show_015.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 64
+    },
+    {
+      "id": 66,
+      "meshIndex": 23,
+      "meshPath": "LevelRes/Lv39/Models/Show_011.asset",
+      "colorIndex": 5,
+      "color": {
+        "r": 0.52156866,
+        "g": 0.78431374,
+        "b": 0.09411765,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.30132857,
+        "y": 0.06179647,
+        "z": 1.8498663
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 67,
+      "meshIndex": 23,
+      "meshPath": "LevelRes/Lv39/Models/Show_011.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 66
+    },
+    {
+      "id": 68,
+      "meshIndex": 23,
+      "meshPath": "LevelRes/Lv39/Models/Show_011.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 67
+    },
+    {
+      "id": 69,
+      "meshIndex": 23,
+      "meshPath": "LevelRes/Lv39/Models/Show_011.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 68
+    },
+    {
+      "id": 70,
+      "meshIndex": 24,
+      "meshPath": "LevelRes/Lv39/Models/Show_007.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.49533576,
+        "y": -0.48471943,
+        "z": -0.789
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 122.6,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 71,
+      "meshIndex": 24,
+      "meshPath": "LevelRes/Lv39/Models/Show_007.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 70
+    },
+    {
+      "id": 72,
+      "meshIndex": 24,
+      "meshPath": "LevelRes/Lv39/Models/Show_007.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 71
+    },
+    {
+      "id": 73,
+      "meshIndex": 24,
+      "meshPath": "LevelRes/Lv39/Models/Show_007.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 72
+    },
+    {
+      "id": 74,
+      "meshIndex": 25,
+      "meshPath": "LevelRes/Lv39/Models/Show_019.asset",
+      "colorIndex": 7,
+      "color": {
+        "r": 0.9411765,
+        "g": 0.5137255,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.955356,
+        "y": 0.036002595,
+        "z": -0.6666054
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 75,
+      "meshIndex": 25,
+      "meshPath": "LevelRes/Lv39/Models/Show_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 74
+    },
+    {
+      "id": 76,
+      "meshIndex": 25,
+      "meshPath": "LevelRes/Lv39/Models/Show_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 75
+    },
+    {
+      "id": 77,
+      "meshIndex": 25,
+      "meshPath": "LevelRes/Lv39/Models/Show_019.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 76
+    },
+    {
+      "id": 78,
+      "meshIndex": 26,
+      "meshPath": "LevelRes/Lv39/Models/Show_021.asset",
+      "colorIndex": 7,
+      "color": {
+        "r": 0.9411765,
+        "g": 0.5137255,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.955355,
+        "y": 0.036002606,
+        "z": -0.66660726
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 79,
+      "meshIndex": 26,
+      "meshPath": "LevelRes/Lv39/Models/Show_021.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 78
+    },
+    {
+      "id": 80,
+      "meshIndex": 26,
+      "meshPath": "LevelRes/Lv39/Models/Show_021.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 79
+    },
+    {
+      "id": 81,
+      "meshIndex": 26,
+      "meshPath": "LevelRes/Lv39/Models/Show_021.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 80
+    },
+    {
+      "id": 82,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.44852,
+        "y": -0.45748,
+        "z": -2.371
+      },
+      "eulerAngles": {
+        "x": 90.0,
+        "y": 179.99965,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 83,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 82
+    },
+    {
+      "id": 84,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 83
+    },
+    {
+      "id": 85,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 84
+    },
+    {
+      "id": 86,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0017609295,
+        "y": 0.012308806,
+        "z": 0.6139811
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 87,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 86
+    },
+    {
+      "id": 88,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 87
+    },
+    {
+      "id": 89,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 88
+    },
+    {
+      "id": 90,
+      "meshIndex": 28,
+      "meshPath": "LevelRes/Lv39/Models/Show_010.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.29979718,
+        "y": 0.6746944,
+        "z": 1.8043379
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 91,
+      "meshIndex": 28,
+      "meshPath": "LevelRes/Lv39/Models/Show_010.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 90
+    },
+    {
+      "id": 92,
+      "meshIndex": 28,
+      "meshPath": "LevelRes/Lv39/Models/Show_010.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 91
+    },
+    {
+      "id": 93,
+      "meshIndex": 28,
+      "meshPath": "LevelRes/Lv39/Models/Show_010.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 92
+    },
+    {
+      "id": 94,
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv39/Models/Show_016.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.701953,
+        "y": 0.03600257,
+        "z": -0.66660583
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 95,
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv39/Models/Show_016.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 94
+    },
+    {
+      "id": 96,
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv39/Models/Show_016.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 95
+    },
+    {
+      "id": 97,
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv39/Models/Show_016.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 96
+    },
+    {
+      "id": 98,
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv39/Models/Show_018.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 0.21568628,
+        "g": 0.85882354,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.7019525,
+        "y": 0.03600257,
+        "z": -0.66660666
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 99,
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv39/Models/Show_018.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 98
+    },
+    {
+      "id": 100,
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv39/Models/Show_018.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 99
+    },
+    {
+      "id": 101,
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv39/Models/Show_018.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 100
+    },
+    {
+      "id": 102,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.44853,
+        "y": 0.43981,
+        "z": -2.371
+      },
+      "eulerAngles": {
+        "x": 0.0005122642,
+        "y": 269.99997,
+        "z": 90.00001
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 103,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 102
+    },
+    {
+      "id": 104,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 103
+    },
+    {
+      "id": 105,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 104
+    },
+    {
+      "id": 106,
+      "meshIndex": 31,
+      "meshPath": "LevelRes/Lv39/Models/Show_008.asset",
+      "colorIndex": 5,
+      "color": {
+        "r": 0.52156866,
+        "g": 0.78431374,
+        "b": 0.09411765,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.49557963,
+        "y": -0.48471943,
+        "z": -0.789
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 122.6,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 107,
+      "meshIndex": 31,
+      "meshPath": "LevelRes/Lv39/Models/Show_008.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 106
+    },
+    {
+      "id": 108,
+      "meshIndex": 31,
+      "meshPath": "LevelRes/Lv39/Models/Show_008.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 107
+    },
+    {
+      "id": 109,
+      "meshIndex": 31,
+      "meshPath": "LevelRes/Lv39/Models/Show_008.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 108
+    },
+    {
+      "id": 110,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": 5,
+      "color": {
+        "r": 0.52156866,
+        "g": 0.78431374,
+        "b": 0.09411765,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0017609295,
+        "y": 0.012,
+        "z": -0.814
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 111,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 110
+    },
+    {
+      "id": 112,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 111
+    },
+    {
+      "id": 113,
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv39/Models/Show_23.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 112
+    },
+    {
+      "id": 114,
+      "meshIndex": 32,
+      "meshPath": "LevelRes/Lv39/Models/Show_012.asset",
+      "colorIndex": 5,
+      "color": {
+        "r": 0.52156866,
+        "g": 0.78431374,
+        "b": 0.09411765,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.3000416,
+        "y": 0.6746945,
+        "z": 1.804338
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 115,
+      "meshIndex": 32,
+      "meshPath": "LevelRes/Lv39/Models/Show_012.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 114
+    },
+    {
+      "id": 116,
+      "meshIndex": 32,
+      "meshPath": "LevelRes/Lv39/Models/Show_012.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 115
+    },
+    {
+      "id": 117,
+      "meshIndex": 32,
+      "meshPath": "LevelRes/Lv39/Models/Show_012.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 116
+    },
+    {
+      "id": 118,
+      "meshIndex": 33,
+      "meshPath": "LevelRes/Lv39/Models/Show_013.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.301573,
+        "y": 0.061796468,
+        "z": 1.8498666
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 119,
+      "meshIndex": 33,
+      "meshPath": "LevelRes/Lv39/Models/Show_013.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 118
+    },
+    {
+      "id": 120,
+      "meshIndex": 33,
+      "meshPath": "LevelRes/Lv39/Models/Show_013.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 119
+    },
+    {
+      "id": 121,
+      "meshIndex": 33,
+      "meshPath": "LevelRes/Lv39/Models/Show_013.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 120
+    },
+    {
+      "id": 122,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.44876,
+        "y": -0.45747,
+        "z": -2.371
+      },
+      "eulerAngles": {
+        "x": -0.00017416982,
+        "y": 90.000015,
+        "z": 270.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 123,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 122
+    },
+    {
+      "id": 124,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 123
+    },
+    {
+      "id": 125,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv39/Models/Show_022.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.95,
+        "y": 0.95,
+        "z": 0.95
+      },
+      "materialIndex": 0,
+      "group": 124
+    }
+  ],
+  "decorates": [
+    {
+      "meshIndex": 34,
+      "meshPath": "LevelRes/Lv39/Models/Decorate_003.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0037699044,
+        "y": -0.77587056,
+        "z": 1.3920027
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 3
+    },
+    {
+      "meshIndex": 35,
+      "meshPath": "LevelRes/Lv39/Models/Hide_023.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.004979968,
+        "y": -1.1496242,
+        "z": 1.5844245
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 3
+    },
+    {
+      "meshIndex": 36,
+      "meshPath": "LevelRes/Lv39/Models/Hide_024.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.013000041,
+        "y": -1.6299998,
+        "z": 1.8323054
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 3
+    },
+    {
+      "meshIndex": 37,
+      "meshPath": "LevelRes/Lv39/Models/Decorate_001.asset",
+      "color": {
+        "r": 0.6132076,
+        "g": 0.6132076,
+        "b": 0.6132076,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.2537918,
+        "y": 0.03600266,
+        "z": -0.66660666
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 4
+    },
+    {
+      "meshIndex": 37,
+      "meshPath": "LevelRes/Lv39/Models/Decorate_001.asset",
+      "color": {
+        "r": 0.6132076,
+        "g": 0.6132076,
+        "b": 0.6132076,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.267007,
+        "y": 0.03600256,
+        "z": -0.6681662
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 177.84567,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.000015,
+        "y": 100.00001,
+        "z": 99.999985
+      },
+      "materialIndex": 2,
+      "group": 5
+    },
+    {
+      "meshIndex": 38,
+      "meshPath": "LevelRes/Lv39/Models/Hide_011.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.9423602,
+        "y": 0.65411717,
+        "z": 0.5987698
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 10
+    },
+    {
+      "meshIndex": 39,
+      "meshPath": "LevelRes/Lv39/Models/Hide_010.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.0446168,
+        "y": 0.6859034,
+        "z": -0.5406343
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 11
+    },
+    {
+      "meshIndex": 40,
+      "meshPath": "LevelRes/Lv39/Models/Hide_008.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.0446174,
+        "y": 0.68590343,
+        "z": -0.5406343
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 12
+    },
+    {
+      "meshIndex": 41,
+      "meshPath": "LevelRes/Lv39/Models/Hide_009.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.94236004,
+        "y": 0.65411705,
+        "z": 0.59876984
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 13
+    },
+    {
+      "meshIndex": 42,
+      "meshPath": "LevelRes/Lv39/Models/Decorate_002.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.0639999,
+        "y": -0.63233167,
+        "z": -0.9590002
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 164.99997,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 99.999985,
+        "y": 99.999985,
+        "z": 99.99999
+      },
+      "materialIndex": 2,
+      "group": 14
+    },
+    {
+      "meshIndex": 43,
+      "meshPath": "LevelRes/Lv39/Models/Hide_021.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.324,
+        "y": -1.063,
+        "z": -1.061
+      },
+      "eulerAngles": {
+        "x": 293.69202,
+        "y": 351.0581,
+        "z": 184.70422
+      },
+      "scale": {
+        "x": 99.99999,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 14
+    },
+    {
+      "meshIndex": 44,
+      "meshPath": "LevelRes/Lv39/Models/Hide_017.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.010447502,
+        "y": -1.5942769,
+        "z": -1.1528925
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 14
+    },
+    {
+      "meshIndex": 42,
+      "meshPath": "LevelRes/Lv39/Models/Decorate_002.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.0411657,
+        "y": -0.6323319,
+        "z": -0.98277706
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 15
+    },
+    {
+      "meshIndex": 43,
+      "meshPath": "LevelRes/Lv39/Models/Hide_021.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.5269652,
+        "b": 0.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.3307633,
+        "y": -1.0652823,
+        "z": -1.1050968
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 15
+    },
+    {
+      "meshIndex": 45,
+      "meshPath": "LevelRes/Lv39/Models/Hide_006.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 1.3601451,
+        "z": -0.04726869
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 16
+    },
+    {
+      "meshIndex": 46,
+      "meshPath": "LevelRes/Lv39/Models/Hide_007.asset",
+      "color": {
+        "r": 0.27058825,
+        "g": 0.6156863,
+        "b": 0.8901961,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 1.1035066,
+        "z": -0.058250517
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 100.0,
+        "y": 100.0,
+        "z": 100.0
+      },
+      "materialIndex": 2,
+      "group": 18
+    },
+    {
+      "meshIndex": 47,
+      "meshPath": "LevelRes/Lv39/Models/Show_2_0.90.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.40251565,
+        "b": 0.45755944,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.54,
+        "y": 0.34700003,
+        "z": -0.68027
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.6169567,
+        "y": 0.61695665,
+        "z": 0.3786784
+      },
+      "materialIndex": 2,
+      "group": 20
+    },
+    {
+      "meshIndex": 47,
+      "meshPath": "LevelRes/Lv39/Models/Show_2_0.90.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.40251565,
+        "b": 0.45755944,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.5879924,
+        "y": 0.35300002,
+        "z": -0.67999995
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.6169567,
+        "y": 0.61695665,
+        "z": 0.3786784
+      },
+      "materialIndex": 2,
+      "group": 22
+    },
+    {
+      "meshIndex": 48,
+      "meshPath": "LevelRes/Lv39/Models/Show_001.asset",
+      "color": {
+        "r": 1.0,
+        "g": 0.58176094,
+        "b": 0.9217852,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.00011475,
+        "y": -0.00883044,
+        "z": -2.4722
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 103.54,
+        "y": 103.54,
+        "z": 103.54
+      },
+      "materialIndex": 2,
+      "group": 54
+    }
+  ],
+  "specialItems": [
+    {
+      "itemName": "SpecialItem_2",
+      "position": {
+        "x": 0.66,
+        "y": 0.892,
+        "z": 1.218
+      },
+      "eulerAngles": {
+        "x": 313.51727,
+        "y": 74.6234,
+        "z": 12.858106
+      },
+      "scale": {
+        "x": 15.0,
+        "y": 15.0,
+        "z": 15.0
+      },
+      "d": "0"
+    },
+    {
+      "itemName": "SpecialItem_2",
+      "position": {
+        "x": 0.176,
+        "y": 1.98,
+        "z": 2.565
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 95.30688,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 15.0,
+        "y": 15.0,
+        "z": 15.0
+      },
+      "d": "62"
+    },
+    {
+      "itemName": "SpecialItem_3",
+      "position": {
+        "x": 0.799,
+        "y": 0.573,
+        "z": -2.356
+      },
+      "eulerAngles": {
+        "x": 330.50226,
+        "y": 131.04453,
+        "z": 336.01126
+      },
+      "scale": {
+        "x": 15.0,
+        "y": 15.0,
+        "z": 15.0
+      },
+      "d": "58"
+    },
+    {
+      "itemName": "SpecialItem_3",
+      "position": {
+        "x": -1.023,
+        "y": 1.136,
+        "z": 2.676
+      },
+      "eulerAngles": {
+        "x": 272.9344,
+        "y": 95.30673,
+        "z": 0.00013341843
+      },
+      "scale": {
+        "x": 15.0,
+        "y": 15.0,
+        "z": 15.0
+      },
+      "d": "39"
+    },
+    {
+      "itemName": "SpecialItem_c01",
+      "position": {
+        "x": -0.67,
+        "y": 1.2,
+        "z": 1.17
+      },
+      "eulerAngles": {
+        "x": 324.07428,
+        "y": 310.6656,
+        "z": 123.58106
+      },
+      "scale": {
+        "x": 103.7995,
+        "y": 103.79949,
+        "z": 103.7995
+      },
+      "d": "1,117"
+    },
+    {
+      "itemName": "SpecialItem_1",
+      "position": {
+        "x": 0.854,
+        "y": -0.485,
+        "z": 1.097
+      },
+      "eulerAngles": {
+        "x": 30.18769,
+        "y": 63.489853,
+        "z": 344.2495
+      },
+      "scale": {
+        "x": 15.0,
+        "y": 15.0,
+        "z": 15.0
+      },
+      "d": "2"
+    }
+  ]
+}

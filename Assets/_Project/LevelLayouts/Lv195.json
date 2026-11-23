@@ -1,0 +1,3868 @@
+{
+  "level": "Lv195",
+  "colors": [
+    {
+      "index": 0,
+      "count": 24,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "count": 21,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "count": 18,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "count": 15,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "count": 15,
+      "color": {
+        "r": 0.74509805,
+        "g": 0.74509805,
+        "b": 0.74509805,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 5,
+      "count": 15,
+      "color": {
+        "r": 0.41568628,
+        "g": 0.7647059,
+        "b": 0.21960784,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 6,
+      "count": 12,
+      "color": {
+        "r": 0.0,
+        "g": 1.0,
+        "b": 0.9544163,
+        "a": 1.0
+      }
+    },
+    {
+      "index": 7,
+      "count": 12,
+      "color": {
+        "r": 0.2901961,
+        "g": 0.27450982,
+        "b": 0.3019608,
+        "a": 1.0
+      }
+    }
+  ],
+  "meshes": [
+    "LevelRes/Lv195/Models/Hide_dolphin01.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin02.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring.asset",
+    "LevelRes/Lv195/Models/Hide_bottom.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring_01.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring02_03.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring02_04.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring02_01.asset",
+    "LevelRes/Lv195/Models/Hide_fish02.asset",
+    "LevelRes/Lv195/Models/Hide_swimmingring02_02.asset",
+    "LevelRes/Lv195/Models/Hide_starfish_03.asset",
+    "LevelRes/Lv195/Models/Hide_starfish_02.asset",
+    "LevelRes/Lv195/Models/Hide_starfish_01.asset",
+    "LevelRes/Lv195/Models/Show_bottom.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+    "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+    "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+    "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+    "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+    "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+    "LevelRes/Lv195/Models/Decorate_dolphin_eyes_l.asset",
+    "LevelRes/Lv195/Models/Decorate_dolphin_eyes_r.asset",
+    "LevelRes/Lv195/Models/Decorate_bubble_05.asset",
+    "LevelRes/Lv195/Models/Decorate_bubble_01.asset",
+    "LevelRes/Lv195/Models/Decorate_bubble_03.asset",
+    "LevelRes/Lv195/Models/Decorate_bubble_06.asset",
+    "LevelRes/Lv195/Models/Decorate_fish02_eyes_r.asset",
+    "LevelRes/Lv195/Models/Decorate_fish02_eyes_l.asset"
+  ],
+  "parts": [
+    {
+      "id": 0,
+      "meshIndex": 0,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin01.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 0.56098,
+        "z": -0.03148991
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 1,
+      "meshIndex": 1,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin02.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.74509805,
+        "g": 0.74509805,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": -0.1826,
+        "z": 1.0496801
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 2,
+      "meshIndex": 2,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.1656599,
+        "y": -1.8245002,
+        "z": 0.48016024
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.39513,
+        "z": 70.39513
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 3,
+      "meshIndex": 3,
+      "meshPath": "LevelRes/Lv195/Models/Hide_bottom.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.74509805,
+        "g": 0.74509805,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": -3.1816,
+        "z": 0.4801601
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 4,
+      "meshIndex": 4,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring_01.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.74509805,
+        "g": 0.74509805,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": -1.8245,
+        "z": 0.4801601
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 5,
+      "meshIndex": 5,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_03.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.17014,
+        "y": -0.29201,
+        "z": 2.56
+      },
+      "eulerAngles": {
+        "x": 298.60162,
+        "y": 217.45035,
+        "z": 120.99915
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 6,
+      "meshIndex": 5,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 5
+    },
+    {
+      "id": 7,
+      "meshIndex": 5,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 6
+    },
+    {
+      "id": 8,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_04.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.51,
+        "y": -0.91567,
+        "z": -2.04
+      },
+      "eulerAngles": {
+        "x": 338.81985,
+        "y": 234.37158,
+        "z": 122.76743
+      },
+      "scale": {
+        "x": 70.39513,
+        "y": 70.39513,
+        "z": 70.39513
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 9,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_04.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 8
+    },
+    {
+      "id": 10,
+      "meshIndex": 6,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_04.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 9
+    },
+    {
+      "id": 11,
+      "meshIndex": 7,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_01.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.7311,
+        "y": -0.54413,
+        "z": 1.7554301
+      },
+      "eulerAngles": {
+        "x": 285.06927,
+        "y": 61.87506,
+        "z": 297.74045
+      },
+      "scale": {
+        "x": 70.39513,
+        "y": 70.39513,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 12,
+      "meshIndex": 7,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 11
+    },
+    {
+      "id": 13,
+      "meshIndex": 7,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 12
+    },
+    {
+      "id": 14,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.4626,
+        "y": 4.5577,
+        "z": -2.1178
+      },
+      "eulerAngles": {
+        "x": 279.6719,
+        "y": 257.0514,
+        "z": 80.34533
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 15,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 14
+    },
+    {
+      "id": 16,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 15
+    },
+    {
+      "id": 17,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.6642,
+        "y": 1.0634,
+        "z": -3.7459998
+      },
+      "eulerAngles": {
+        "x": 290.3919,
+        "y": 358.8915,
+        "z": 242.40642
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 18,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 17
+    },
+    {
+      "id": 19,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 18
+    },
+    {
+      "id": 20,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": 3.9337,
+        "y": 3.078,
+        "z": -0.29949987
+      },
+      "eulerAngles": {
+        "x": 279.2359,
+        "y": 207.31908,
+        "z": 90.00011
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 21,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 20
+    },
+    {
+      "id": 22,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 21
+    },
+    {
+      "id": 23,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.9756,
+        "y": 0.75103,
+        "z": 2.9543002
+      },
+      "eulerAngles": {
+        "x": 285.68655,
+        "y": 322.44803,
+        "z": 270.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 24,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 23
+    },
+    {
+      "id": 25,
+      "meshIndex": 8,
+      "meshPath": "LevelRes/Lv195/Models/Hide_fish02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 24
+    },
+    {
+      "id": 26,
+      "meshIndex": 9,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_02.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.6019,
+        "y": 0.15546,
+        "z": 0.6506501
+      },
+      "eulerAngles": {
+        "x": 347.0282,
+        "y": 276.19345,
+        "z": 48.16269
+      },
+      "scale": {
+        "x": 70.39513,
+        "y": 70.395134,
+        "z": 70.39513
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 27,
+      "meshIndex": 9,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 26
+    },
+    {
+      "id": 28,
+      "meshIndex": 9,
+      "meshPath": "LevelRes/Lv195/Models/Hide_swimmingring02_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 27
+    },
+    {
+      "id": 29,
+      "meshIndex": 10,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_03.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": 3.5094,
+        "y": -2.6192,
+        "z": -1.1912999
+      },
+      "eulerAngles": {
+        "x": 286.4853,
+        "y": 250.45322,
+        "z": 232.36646
+      },
+      "scale": {
+        "x": 70.39512,
+        "y": 70.39513,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 30,
+      "meshIndex": 10,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 29
+    },
+    {
+      "id": 31,
+      "meshIndex": 10,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 30
+    },
+    {
+      "id": 32,
+      "meshIndex": 11,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_02.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.8728,
+        "y": -2.8059,
+        "z": -1.7343998
+      },
+      "eulerAngles": {
+        "x": 279.8538,
+        "y": 30.354969,
+        "z": 208.53629
+      },
+      "scale": {
+        "x": 70.39513,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 33,
+      "meshIndex": 11,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 32
+    },
+    {
+      "id": 34,
+      "meshIndex": 11,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 33
+    },
+    {
+      "id": 35,
+      "meshIndex": 12,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_01.asset",
+      "colorIndex": 2,
+      "color": {
+        "r": 1.0,
+        "g": 0.52156866,
+        "b": 0.49803922,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.7647,
+        "y": -2.711,
+        "z": 3.7645001
+      },
+      "eulerAngles": {
+        "x": 278.46713,
+        "y": 126.20613,
+        "z": 201.89862
+      },
+      "scale": {
+        "x": 70.39513,
+        "y": 70.395134,
+        "z": 70.39513
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 36,
+      "meshIndex": 12,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 35
+    },
+    {
+      "id": 37,
+      "meshIndex": 12,
+      "meshPath": "LevelRes/Lv195/Models/Hide_starfish_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 36
+    },
+    {
+      "id": 38,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.0815,
+        "y": -3.1816,
+        "z": 2.3959002
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 39,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 38
+    },
+    {
+      "id": 40,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 39
+    },
+    {
+      "id": 41,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 40
+    },
+    {
+      "id": 42,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 41
+    },
+    {
+      "id": 43,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.2554,
+        "y": 0.48728,
+        "z": -0.3908999
+      },
+      "eulerAngles": {
+        "x": 280.57657,
+        "y": 180.0,
+        "z": 180.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 44,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 43
+    },
+    {
+      "id": 45,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 44
+    },
+    {
+      "id": 46,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 45
+    },
+    {
+      "id": 47,
+      "meshIndex": 14,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_r.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 46
+    },
+    {
+      "id": 48,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+      "colorIndex": 4,
+      "color": {
+        "r": 0.74509805,
+        "g": 0.74509805,
+        "b": 0.74509805,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 1.7943,
+        "z": 2.1612
+      },
+      "eulerAngles": {
+        "x": 271.72467,
+        "y": 180.0,
+        "z": 180.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 49,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 48
+    },
+    {
+      "id": 50,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 49
+    },
+    {
+      "id": 51,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 50
+    },
+    {
+      "id": 52,
+      "meshIndex": 15,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 51
+    },
+    {
+      "id": 53,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.9241,
+        "y": 0.48728,
+        "z": -0.3908999
+      },
+      "eulerAngles": {
+        "x": 280.57657,
+        "y": 180.0,
+        "z": 180.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 54,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 53
+    },
+    {
+      "id": 55,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 54
+    },
+    {
+      "id": 56,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 55
+    },
+    {
+      "id": 57,
+      "meshIndex": 16,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_hand_l.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 56
+    },
+    {
+      "id": 58,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.7502,
+        "y": -3.1816,
+        "z": 2.3959002
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 270.02,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 59,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 58
+    },
+    {
+      "id": 60,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 59
+    },
+    {
+      "id": 61,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 60
+    },
+    {
+      "id": 62,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 61
+    },
+    {
+      "id": 63,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.7502,
+        "y": -3.1816,
+        "z": -1.4356999
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 180.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 64,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 63
+    },
+    {
+      "id": 65,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 64
+    },
+    {
+      "id": 66,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 65
+    },
+    {
+      "id": 67,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 66
+    },
+    {
+      "id": 68,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.0815,
+        "y": -3.1816,
+        "z": -1.4356999
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 89.98,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 69,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 68
+    },
+    {
+      "id": 70,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 69
+    },
+    {
+      "id": 71,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 70
+    },
+    {
+      "id": 72,
+      "meshIndex": 13,
+      "meshPath": "LevelRes/Lv195/Models/Show_bottom.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 71
+    },
+    {
+      "id": 73,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 2.3207,
+        "z": 2.1576
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 74,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 73
+    },
+    {
+      "id": 75,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 74
+    },
+    {
+      "id": 76,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 75
+    },
+    {
+      "id": 77,
+      "meshIndex": 17,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_mouse01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 76
+    },
+    {
+      "id": 78,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 0.97312,
+        "z": -2.593
+      },
+      "eulerAngles": {
+        "x": 299.5733,
+        "y": 180.0,
+        "z": 180.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.39513,
+        "z": 70.39513
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 79,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 78
+    },
+    {
+      "id": 80,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 79
+    },
+    {
+      "id": 81,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 80
+    },
+    {
+      "id": 82,
+      "meshIndex": 18,
+      "meshPath": "LevelRes/Lv195/Models/Hide_dolphin_fin.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 81
+    },
+    {
+      "id": 83,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.9107,
+        "y": -1.8245,
+        "z": 2.2251
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 84,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 83
+    },
+    {
+      "id": 85,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 84
+    },
+    {
+      "id": 86,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 85
+    },
+    {
+      "id": 87,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 86
+    },
+    {
+      "id": 88,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 87
+    },
+    {
+      "id": 89,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 88
+    },
+    {
+      "id": 90,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": -1.5321,
+        "z": 0.4129001
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 91,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 90
+    },
+    {
+      "id": 92,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 91
+    },
+    {
+      "id": 93,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 92
+    },
+    {
+      "id": 94,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 93
+    },
+    {
+      "id": 95,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 94
+    },
+    {
+      "id": 96,
+      "meshIndex": 20,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_03.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 95
+    },
+    {
+      "id": 97,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": 1,
+      "color": {
+        "r": 0.9254902,
+        "g": 0.7764706,
+        "b": 0.16862746,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 2.7492,
+        "z": -0.12121993
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 98,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 97
+    },
+    {
+      "id": 99,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 98
+    },
+    {
+      "id": 100,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 99
+    },
+    {
+      "id": 101,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 100
+    },
+    {
+      "id": 102,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 101
+    },
+    {
+      "id": 103,
+      "meshIndex": 21,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_02.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 102
+    },
+    {
+      "id": 104,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": 0.16566,
+        "y": 0.47425,
+        "z": -0.20099986
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 105,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 104
+    },
+    {
+      "id": 106,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 105
+    },
+    {
+      "id": 107,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 106
+    },
+    {
+      "id": 108,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 107
+    },
+    {
+      "id": 109,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 108
+    },
+    {
+      "id": 110,
+      "meshIndex": 22,
+      "meshPath": "LevelRes/Lv195/Models/Show_dolphin_body_01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 109
+    },
+    {
+      "id": 111,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": 0,
+      "color": {
+        "r": 0.3019608,
+        "g": 0.57254905,
+        "b": 0.9529412,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.5793,
+        "y": -1.8245,
+        "z": -1.2647998
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 180.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 112,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 111
+    },
+    {
+      "id": 113,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 112
+    },
+    {
+      "id": 114,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 113
+    },
+    {
+      "id": 115,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 114
+    },
+    {
+      "id": 116,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 115
+    },
+    {
+      "id": 117,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 116
+    },
+    {
+      "id": 118,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.9107,
+        "y": -1.8245,
+        "z": -1.2647998
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 90.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 119,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 118
+    },
+    {
+      "id": 120,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 119
+    },
+    {
+      "id": 121,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 120
+    },
+    {
+      "id": 122,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 121
+    },
+    {
+      "id": 123,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 122
+    },
+    {
+      "id": 124,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 123
+    },
+    {
+      "id": 125,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": 3,
+      "color": {
+        "r": 0.6039216,
+        "g": 0.5019608,
+        "b": 0.8980392,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.5793,
+        "y": -1.8245,
+        "z": 2.2251
+      },
+      "eulerAngles": {
+        "x": 270.0,
+        "y": 270.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 70.395134,
+        "y": 70.395134,
+        "z": 70.395134
+      },
+      "materialIndex": 0,
+      "group": -1
+    },
+    {
+      "id": 126,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 125
+    },
+    {
+      "id": 127,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 126
+    },
+    {
+      "id": 128,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 127
+    },
+    {
+      "id": 129,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 128
+    },
+    {
+      "id": 130,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 129
+    },
+    {
+      "id": 131,
+      "meshIndex": 19,
+      "meshPath": "LevelRes/Lv195/Models/Show_swimmingring01.asset",
+      "colorIndex": -1,
+      "color": null,
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "eulerAngles": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.98,
+        "y": 0.98,
+        "z": 0.98
+      },
+      "materialIndex": 0,
+      "group": 130
+    }
+  ],
+  "decorates": [
+    {
+      "meshIndex": 23,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_dolphin_eyes_l.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.2541362,
+        "y": 2.5942266,
+        "z": 0.41856295
+      },
+      "eulerAngles": {
+        "x": 351.66977,
+        "y": 72.89237,
+        "z": 347.6908
+      },
+      "scale": {
+        "x": 0.70395136,
+        "y": 0.70395136,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 0
+    },
+    {
+      "meshIndex": 24,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_dolphin_eyes_r.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.5854567,
+        "y": 2.5942261,
+        "z": 0.41856426
+      },
+      "eulerAngles": {
+        "x": 351.66977,
+        "y": 72.89237,
+        "z": 347.6908
+      },
+      "scale": {
+        "x": 0.70395136,
+        "y": 0.70395136,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 0
+    },
+    {
+      "meshIndex": 25,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_bubble_05.asset",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.107399,
+        "y": -0.70350635,
+        "z": 1.8240342
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.70395124
+      },
+      "materialIndex": 1,
+      "group": 2
+    },
+    {
+      "meshIndex": 26,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_bubble_01.asset",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 1.2279224,
+        "y": -0.73166454,
+        "z": 3.2319365
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.70395124
+      },
+      "materialIndex": 1,
+      "group": 2
+    },
+    {
+      "meshIndex": 27,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_bubble_03.asset",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.0909898,
+        "y": -0.67534876,
+        "z": -1.3085475
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.70395124
+      },
+      "materialIndex": 1,
+      "group": 2
+    },
+    {
+      "meshIndex": 28,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_bubble_06.asset",
+      "color": {
+        "r": 1.0,
+        "g": 1.0,
+        "b": 1.0,
+        "a": 1.0
+      },
+      "position": {
+        "x": -1.754989,
+        "y": -0.689428,
+        "z": -1.512694
+      },
+      "eulerAngles": {
+        "x": 270.01978,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.70395124
+      },
+      "materialIndex": 1,
+      "group": 2
+    },
+    {
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_r.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.6509164,
+        "y": 4.9418783,
+        "z": -1.9851134
+      },
+      "eulerAngles": {
+        "x": 340.56107,
+        "y": 138.13823,
+        "z": 8.006126
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 14
+    },
+    {
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_l.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": -0.80158913,
+        "y": 4.928645,
+        "z": -1.6253488
+      },
+      "eulerAngles": {
+        "x": 340.56107,
+        "y": 138.13823,
+        "z": 8.006126
+      },
+      "scale": {
+        "x": 0.7039513,
+        "y": 0.70395124,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 14
+    },
+    {
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_r.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": -2.9002235,
+        "y": 0.9938717,
+        "z": -2.8722224
+      },
+      "eulerAngles": {
+        "x": 1.1689057,
+        "y": 37.927364,
+        "z": 29.850956
+      },
+      "scale": {
+        "x": 0.70395136,
+        "y": 0.70395136,
+        "z": 0.70395136
+      },
+      "materialIndex": 1,
+      "group": 17
+    },
+    {
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_l.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": -3.241735,
+        "y": 1.0557038,
+        "z": -3.0507028
+      },
+      "eulerAngles": {
+        "x": 1.1689057,
+        "y": 37.927364,
+        "z": 29.850956
+      },
+      "scale": {
+        "x": 0.70395136,
+        "y": 0.70395136,
+        "z": 0.70395136
+      },
+      "materialIndex": 1,
+      "group": 17
+    },
+    {
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_l.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": 4.130811,
+        "y": 3.4502912,
+        "z": 0.5002442
+      },
+      "eulerAngles": {
+        "x": 342.1844,
+        "y": 98.01465,
+        "z": 7.741864
+      },
+      "scale": {
+        "x": 0.7039515,
+        "y": 0.7039514,
+        "z": 0.70395136
+      },
+      "materialIndex": 1,
+      "group": 20
+    },
+    {
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_r.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": 4.478345,
+        "y": 3.45252,
+        "z": 0.32269478
+      },
+      "eulerAngles": {
+        "x": 342.1844,
+        "y": 98.01465,
+        "z": 7.741864
+      },
+      "scale": {
+        "x": 0.7039515,
+        "y": 0.7039514,
+        "z": 0.70395136
+      },
+      "materialIndex": 1,
+      "group": 20
+    },
+    {
+      "meshIndex": 29,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_r.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.592953,
+        "y": 0.75239795,
+        "z": 3.7774692
+      },
+      "eulerAngles": {
+        "x": 351.67215,
+        "y": 27.6911,
+        "z": 31.441198
+      },
+      "scale": {
+        "x": 0.7039512,
+        "y": 0.70395124,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 23
+    },
+    {
+      "meshIndex": 30,
+      "meshPath": "LevelRes/Lv195/Models/Decorate_fish02_eyes_l.asset",
+      "color": {
+        "r": 0.45490196,
+        "g": 0.23921569,
+        "b": 0.18431373,
+        "a": 1.0
+      },
+      "position": {
+        "x": 2.2850978,
+        "y": 0.7511151,
+        "z": 3.53761
+      },
+      "eulerAngles": {
+        "x": 351.67215,
+        "y": 27.6911,
+        "z": 31.441198
+      },
+      "scale": {
+        "x": 0.7039512,
+        "y": 0.70395124,
+        "z": 0.7039514
+      },
+      "materialIndex": 1,
+      "group": 23
+    }
+  ],
+  "specialItems": [
+    {
+      "itemName": "SpecialItem_1",
+      "position": {
+        "x": 3.5115,
+        "y": -3.0042,
+        "z": 2.4448001
+      },
+      "eulerAngles": {
+        "x": 2.1917155,
+        "y": 245.25769,
+        "z": 270.3506
+      },
+      "scale": {
+        "x": 21.010061,
+        "y": 21.010057,
+        "z": 21.010061
+      },
+      "d": "3"
+    },
+    {
+      "itemName": "SpecialItem_1",
+      "position": {
+        "x": -3.5793,
+        "y": -3.0825,
+        "z": 1.5149701
+      },
+      "eulerAngles": {
+        "x": 2.1917036,
+        "y": 288.59406,
+        "z": 270.3506
+      },
+      "scale": {
+        "x": 21.010061,
+        "y": 21.010057,
+        "z": 21.010061
+      },
+      "d": "3"
+    }
+  ]
+}
