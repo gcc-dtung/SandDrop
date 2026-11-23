@@ -20,6 +20,9 @@ namespace GameKit.Gameplay.Level
     [CreateAssetMenu(menuName = "GameKit/Sand/Level", fileName = "SandLevel")]
     public sealed class SandLevelData : ScriptableObject
     {
+        /// <summary>Largest cut-off piece of a baked block given to its neighbour (<see cref="VoxelGrid.MergeCrumbs"/>).</summary>
+        public const int CrumbSize = 8;
+
         public Vector3Int gridSize = new Vector3Int(24, 24, 24);
         [Tooltip("World size of one grain.")]
         public float grainSize = 0.1f;
@@ -38,6 +41,7 @@ namespace GameKit.Gameplay.Level
         [Tooltip("Cells along the model's longest side when baking.")]
         public int bakeResolution = 44;
         [HideInInspector] public List<int> bakedCells = new List<int>();
+        [HideInInspector] public List<int> bakedOverlaps = new List<int>();
 
         public bool IsBaked => bakedCells != null && bakedCells.Count > 0;
 
@@ -65,7 +69,10 @@ namespace GameKit.Gameplay.Level
         {
             if (IsBaked)
             {
-                return VoxelGrid.FromRunLength(gridSize, bakedCells);
+                // Baked from meshes: clean up the crumbs left where pieces nearly overlap (specks of another colour).
+                VoxelGrid baked = VoxelGrid.FromRunLength(gridSize, bakedCells);
+                baked.MergeCrumbs(CrumbSize);
+                return baked;
             }
 
             var shapes = new IReadOnlyList<SandShape>[blocks.Count];

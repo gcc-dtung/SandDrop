@@ -63,11 +63,13 @@ namespace GameKit.Gameplay.Level
         /// <summary>True once the level has ended (taps stay off until the next level / revive).</summary>
         private bool busy;
         private SandBoardPresenter presenter;
-        private int pressedBlock = -1;
         private bool paused;
 
         public SandBoard Board { get; private set; }
         public int LevelIndex { get; private set; }
+
+        /// <summary>The pause popup is open (game frozen).</summary>
+        public bool IsPaused => paused;
         public SandLevelData CurrentLevel => level;
         public bool IsBusy => busy || (presenter != null && presenter.IsAnimating);
 
@@ -97,10 +99,6 @@ namespace GameKit.Gameplay.Level
                 input.HoldStarted += OnHoldStarted;
                 input.HoldEnded -= OnHoldEnded;
                 input.HoldEnded += OnHoldEnded;
-                input.PressDown -= OnPressDown;
-                input.PressDown += OnPressDown;
-                input.PressUp -= OnPressUp;
-                input.PressUp += OnPressUp;
             }
 
             if (trayTemplate != null)
@@ -160,7 +158,8 @@ namespace GameKit.Gameplay.Level
             {
                 hud.SetZoomWithoutNotify(1f);
             }
-            model.Build(level.BuildGrid(), level.grainSize, blockColors, level.hideInnerBlocks ? level.Parents() : null);
+            model.Build(level.BuildGrid(), level.grainSize, blockColors, level.hideInnerBlocks ? level.Parents() : null,
+                level.bakedOverlaps);
             model.SetDecorations(level.decorations);
             if (view != null)
             {
@@ -281,8 +280,6 @@ namespace GameKit.Gameplay.Level
                 input.Tapped -= OnTapped;
                 input.HoldStarted -= OnHoldStarted;
                 input.HoldEnded -= OnHoldEnded;
-                input.PressDown -= OnPressDown;
-                input.PressUp -= OnPressUp;
             }
             if (hud != null)
             {
@@ -294,38 +291,6 @@ namespace GameKit.Gameplay.Level
             levelCts?.Dispose();
             trayPool?.Dispose();
             slotPool?.Dispose();
-        }
-
-        /// <summary>Touch feedback: the block under the finger squashes in until the press ends.</summary>
-        private void OnPressDown(Vector2 screenPosition)
-        {
-            pressedBlock = -1;
-            if (level == null || input.ViewCamera == null)
-            {
-                return;
-            }
-            int cell = model.RaycastCell(input.ViewCamera.ScreenPointToRay(screenPosition));
-            if (cell < 0)
-            {
-                return;
-            }
-            int block = model.Grid[cell];
-            if (block < 0 || model.IsCollected(block))
-            {
-                return;
-            }
-            pressedBlock = block;
-            model.SetPressed(block, true);
-        }
-
-        /// <summary>Press over (lifted or turned into a drag): the block springs back; a tap then punches it.</summary>
-        private void OnPressUp()
-        {
-            if (pressedBlock >= 0)
-            {
-                model.SetPressed(pressedBlock, false);
-                pressedBlock = -1;
-            }
         }
 
         /// <summary>
@@ -343,7 +308,7 @@ namespace GameKit.Gameplay.Level
             {
                 return;
             }
-            int block = model.Grid[cell];
+            int block = model.VisibleBlock(model.Grid[cell]);
             if (block < 0 || model.IsCollected(block) || !HasSandInside(block))
             {
                 return;
@@ -387,7 +352,7 @@ namespace GameKit.Gameplay.Level
             {
                 return;
             }
-            int block = model.Grid[cell];
+            int block = model.VisibleBlock(model.Grid[cell]);
             if (model.IsCollected(block))
             {
                 return; // Tapped sand that is already on its way out.

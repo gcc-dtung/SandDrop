@@ -24,6 +24,9 @@ namespace GameKit.UI.Framework
         [SerializeField] private Button cancelButton;
         [SerializeField] private TMP_Text cancelLabel;
 
+        /// <summary>Title text (cheats hook a hidden triple tap on it).</summary>
+        public TMP_Text TitleText => titleText;
+
         private bool answer;
         private bool wired;
 

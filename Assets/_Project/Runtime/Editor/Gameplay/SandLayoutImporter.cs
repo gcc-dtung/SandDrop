@@ -170,7 +170,7 @@ namespace GameKit.EditorTools.Gameplay
             int resolution = StartResolution;
             while (true)
             {
-                result = MeshVoxelizer.Build(meshParts, resolution, knownParents: parents);
+                result = MeshVoxelizer.Build(meshParts, resolution, knownParents: parents, autoNestUnlinked: true);
                 int empty = result.CellCounts.Count(c => c == 0);
                 if (empty == 0 || resolution >= MaxResolution)
                 {
@@ -202,7 +202,7 @@ namespace GameKit.EditorTools.Gameplay
                 {
                     name = meshParts[i].Name,
                     colorIndex = color >= 0 && color < colorCount ? color : -1,
-                    parent = parents[i]
+                    parent = result.Parents[i]
                 });
             }
 
@@ -210,6 +210,7 @@ namespace GameKit.EditorTools.Gameplay
             level.blocks = blocks;
             level.gridSize = result.Grid.Size;
             level.bakedCells = result.Grid.ToRunLength();
+            level.bakedOverlaps = result.Overlaps;
             level.bakeResolution = resolution;
             level.grainSize = SandModelImporter.TargetWorldSize /
                               Mathf.Max(result.Grid.Size.x, Mathf.Max(result.Grid.Size.y, result.Grid.Size.z));
@@ -217,6 +218,7 @@ namespace GameKit.EditorTools.Gameplay
             level.hideInnerBlocks = true;
             BuildDecorations(layout, indexById, meshCache, result.Origin, result.CellSize, level);
             level.sourceModelGuid = AssetGuid(layoutAsset);
+            LinkEnclosed(level);
 
             AssignColors(level, declared, LevelNumber(layoutAsset.name), out int peakWaiting);
 
@@ -343,6 +345,153 @@ namespace GameKit.EditorTools.Gameplay
         }
 
         /// <summary>
+        /// Links any unlinked inner parts lying inside a larger closed part (preventing inner pieces from bleeding
+        /// through outer shells), refreshes baked overlaps (preventing holes in thin shells when overlapping pieces
+        /// are collected), and updates the tray queue whenever parenting changes.
+        /// </summary>
+        public static bool FixNestingAndOverlaps(TextAsset layoutAsset, SandLevelData level, out int addedParents, out int peakWaiting)
+        {
+            addedParents = 0;
+            peakWaiting = -1;
+            var layout = JsonUtility.FromJson<LayoutFile>(layoutAsset.text);
+            if (layout?.parts == null || layout.parts.Length != level.blocks.Count ||
+                !BuildMeshParts(layoutAsset, layout, out _, out _, out List<MeshPart> meshParts, out _))
+            {
+                return false;
+            }
+            MeshVoxelResult result = MeshVoxelizer.Build(meshParts, level.bakeResolution, knownParents: level.Parents(),
+                autoNestUnlinked: true);
+            if (result.Grid.Size != level.gridSize)
+            {
+                Debug.LogError($"[SandLayoutImporter] {level.name}: grid does not match the layout any more; import it again.", level);
+                return false;
+            }
+            for (int i = 0; i < level.blocks.Count; i++)
+            {
+                if (result.Parents[i] != level.blocks[i].parent)
+                {
+                    level.blocks[i].parent = result.Parents[i];
+                    addedParents++;
+                }
+            }
+            level.bakedOverlaps = result.Overlaps;
+            if (addedParents > 0)
+            {
+                addedParents += LinkEnclosed(level);
+                Recolor(layoutAsset, level, out peakWaiting);
+            }
+            EditorUtility.SetDirty(level);
+            return true;
+        }
+
+        [MenuItem("Tools/GameKit/Sand/Layouts/Fix Nesting And Overlaps Of Imported Levels")]
+        public static void FixAllNestingAndOverlaps()
+        {
+            int done = 0, nestedLevels = 0, totalNested = 0;
+            string[] guids = AssetDatabase.FindAssets("t:SandLevelData", new[] { OutputFolder });
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+                for (int i = 0; i < guids.Length; i++)
+                {
+                    var level = AssetDatabase.LoadAssetAtPath<SandLevelData>(AssetDatabase.GUIDToAssetPath(guids[i]));
+                    var layout = level != null ? AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(level.sourceModelGuid)) : null;
+                    if (level != null && EditorUtility.DisplayCancelableProgressBar("Fixing sand levels", $"{level.name} ({i + 1}/{guids.Length})", (float)i / guids.Length))
+                    {
+                        break;
+                    }
+                    if (layout != null && FixNestingAndOverlaps(layout, level, out int added, out int peak))
+                    {
+                        done++;
+                        if (added > 0)
+                        {
+                            nestedLevels++;
+                            totalNested += added;
+                            if (peak > SandBoard.DefaultWaitingSlots)
+                            {
+                                Debug.LogWarning($"[SandLayoutImporter] {level.name}: +{added} nested, best colouring needs {peak} waiting slots.", level);
+                            }
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                EditorUtility.ClearProgressBar();
+            }
+            AssetDatabase.SaveAssets();
+            Debug.Log($"[SandLayoutImporter] Fixed {done} level(s): linked {totalNested} inner block(s) across {nestedLevels} level(s) and refreshed overlaps.");
+        }
+
+        /// <summary>Rebuilds only the baked overlaps of an imported level from its layout (colours, parents and tray queue stay as-is).</summary>
+        public static bool RefreshOverlaps(TextAsset layoutAsset, SandLevelData level)
+        {
+            var layout = JsonUtility.FromJson<LayoutFile>(layoutAsset.text);
+            if (layout?.parts == null || layout.parts.Length != level.blocks.Count ||
+                !BuildMeshParts(layoutAsset, layout, out _, out _, out List<MeshPart> meshParts, out _))
+            {
+                return false;
+            }
+            MeshVoxelResult result = MeshVoxelizer.Build(meshParts, level.bakeResolution, knownParents: level.Parents());
+            if (result.Grid.Size != level.gridSize)
+            {
+                Debug.LogError($"[SandLayoutImporter] {level.name}: grid does not match the layout any more; import it again.", level);
+                return false;
+            }
+            level.bakedOverlaps = result.Overlaps;
+            EditorUtility.SetDirty(level);
+            return true;
+        }
+
+        [MenuItem("Tools/GameKit/Sand/Layouts/Refresh Overlaps Of Selected Levels")]
+        public static void RefreshSelectedOverlaps()
+        {
+            int done = 0;
+            foreach (SandLevelData level in Selection.GetFiltered<SandLevelData>(SelectionMode.Assets))
+            {
+                var layout = AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(level.sourceModelGuid));
+                if (layout != null && RefreshOverlaps(layout, level))
+                {
+                    done++;
+                }
+            }
+            AssetDatabase.SaveAssets();
+            Debug.Log($"[SandLayoutImporter] Overlaps refreshed on {done} selected level(s).");
+        }
+
+        [MenuItem("Tools/GameKit/Sand/Layouts/Refresh Overlaps Of Imported Levels")]
+        public static void RefreshAllOverlaps()
+        {
+            int done = 0;
+            string[] guids = AssetDatabase.FindAssets("t:SandLevelData", new[] { OutputFolder });
+            try
+            {
+                AssetDatabase.StartAssetEditing();
+                for (int i = 0; i < guids.Length; i++)
+                {
+                    var level = AssetDatabase.LoadAssetAtPath<SandLevelData>(AssetDatabase.GUIDToAssetPath(guids[i]));
+                    var layout = level != null ? AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(level.sourceModelGuid)) : null;
+                    if (level != null && EditorUtility.DisplayCancelableProgressBar("Sand overlaps", $"{level.name} ({i + 1}/{guids.Length})", (float)i / guids.Length))
+                    {
+                        break;
+                    }
+                    if (layout != null && RefreshOverlaps(layout, level))
+                    {
+                        done++;
+                    }
+                }
+            }
+            finally
+            {
+                AssetDatabase.StopAssetEditing();
+                EditorUtility.ClearProgressBar();
+            }
+            AssetDatabase.SaveAssets();
+            Debug.Log($"[SandLayoutImporter] Overlaps refreshed on {done} level(s).");
+        }
+
+        /// <summary>
         /// Gives every block with colour -1 a colour from what is left of each declared count. Tries several shuffles
         /// (seeded by the level number) and keeps the one whose tray queue needs the fewest waiting slots
         /// (<see cref="TrayQueueBuilder"/>); stops early once the play fits the waiting row.
@@ -431,6 +580,97 @@ namespace GameKit.EditorTools.Gameplay
                 level.blocks[i].colorIndex = color >= 0 && color < colorCount ? color : -1;
             }
             AssignColors(level, declared, LevelNumber(layoutAsset.name), out peakWaiting);
+            EditorUtility.SetDirty(level);
+            return true;
+        }
+
+        /// <summary>
+        /// Makes every top-level piece that lies inside another one (<see cref="LayerLinker"/>) a layer of it. Returns how
+        /// many links were added. Colours / tray queue must be rebuilt afterwards (tap order changed).
+        /// </summary>
+        public static int LinkEnclosed(SandLevelData level, bool alsoCovered = false)
+        {
+            VoxelGrid grid = level.BuildGrid();
+            List<LayerLinker.Link> links = LayerLinker.FindEnclosed(grid, level.Parents(),
+                canCover: alsoCovered ? (b => true) : (Func<int, bool>)null);
+            foreach (LayerLinker.Link link in links)
+            {
+                level.blocks[link.Child].parent = link.Parent;
+            }
+            if (links.Count > 0)
+            {
+                if (level.bakedOverlaps != null && level.bakedOverlaps.Count > 0)
+                {
+                    level.bakedOverlaps = MeshVoxelizer.FilterSameRootOverlaps(level.bakedOverlaps, grid, level.Parents());
+                }
+                Debug.Log($"[SandLayoutImporter] {level.name}: linked {links.Count} enclosed piece(s) as layers: " +
+                          string.Join(", ", links.Select(l => $"{l.Child}->{l.Parent} ({l.Inside:P0})")), level);
+            }
+            return links.Count;
+        }
+
+        [MenuItem("Tools/GameKit/Sand/Layouts/Link Enclosed Pieces In Imported Levels")]
+        public static void LinkEnclosedAll()
+        {
+            int levels = 0, linked = 0, fits = 0;
+            var guids = AssetDatabase.FindAssets("t:SandLevelData", new[] { OutputFolder });
+            foreach (string guid in guids)
+            {
+                var level = AssetDatabase.LoadAssetAtPath<SandLevelData>(AssetDatabase.GUIDToAssetPath(guid));
+                var layout = level != null ? AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(level.sourceModelGuid)) : null;
+                if (layout == null)
+                {
+                    continue;
+                }
+                int added = LinkEnclosed(level);
+                if (added == 0)
+                {
+                    continue;
+                }
+                levels++;
+                linked += added;
+                // Tap order changed: pick colours and the tray queue again so the level stays winnable.
+                if (Recolor(layout, level, out int peak) && peak <= SandBoard.DefaultWaitingSlots)
+                {
+                    fits++;
+                }
+                else
+                {
+                    Debug.LogWarning($"[SandLayoutImporter] {level.name}: after linking, the best colouring needs {peak} waiting slots.", level);
+                }
+                EditorUtility.SetDirty(level);
+            }
+            AssetDatabase.SaveAssets();
+            Debug.Log($"[SandLayoutImporter] Linked {linked} enclosed piece(s) in {levels} level(s); {fits} of them have a winning play " +
+                      $"within {SandBoard.DefaultWaitingSlots} waiting slots.");
+        }
+
+        /// <summary>
+        /// For the selected levels only: also hide pieces covered all round by several pieces that show through holes
+        /// in the cover (e.g. Lv3's inner cake slices through the blue tier). Check the level afterwards: a thick inlay
+        /// meant to be seen (tiles, a window) would be hidden too.
+        /// </summary>
+        [MenuItem("Tools/GameKit/Sand/Layouts/Link Covered Pieces In Selected Levels")]
+        public static void LinkCoveredSelected()
+        {
+            foreach (SandLevelData level in Selection.GetFiltered<SandLevelData>(SelectionMode.Assets))
+            {
+                LinkCovered(level);
+            }
+            AssetDatabase.SaveAssets();
+        }
+
+        public static bool LinkCovered(SandLevelData level)
+        {
+            var layout = AssetDatabase.LoadAssetAtPath<TextAsset>(AssetDatabase.GUIDToAssetPath(level.sourceModelGuid));
+            if (layout == null || LinkEnclosed(level, alsoCovered: true) == 0)
+            {
+                return false;
+            }
+            if (!Recolor(layout, level, out int peak) || peak > SandBoard.DefaultWaitingSlots)
+            {
+                Debug.LogWarning($"[SandLayoutImporter] {level.name}: after linking, the best colouring needs {peak} waiting slots.", level);
+            }
             EditorUtility.SetDirty(level);
             return true;
         }

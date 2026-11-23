@@ -20,7 +20,7 @@ public class UISupport
     {
         new ToolShortcut("Addressables", "Window/Asset Management/Addressables/Groups"),
         new ToolShortcut("PlayerPrefs", "Tools/BG Tools/PlayerPrefs Editor"),
-        new ToolShortcut("SRDebugger", "Window/SRDebugger/Settings Window"),
         new ToolShortcut("Event Bus", "Tools/GameKit/Event Bus Monitor"),
+        new ToolShortcut("Cheats", "Tools/GameKit/Cheats/Cheat Window"),
     };
 }

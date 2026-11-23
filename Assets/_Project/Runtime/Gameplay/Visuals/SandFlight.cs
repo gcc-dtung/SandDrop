@@ -25,6 +25,8 @@ namespace GameKit.Gameplay.Visuals
         [SerializeField] private int maxGrainsPerStream = 140;
         [Tooltip("Seconds between the first and the last grain leaving.")]
         [SerializeField] private float spread = 0.22f;
+        [Tooltip("Most grains leave at the start (ease-out, like the block vanishing) instead of evenly over the leave time.")]
+        [SerializeField] private bool frontLoadedLaunch = true;
         [SerializeField] private float flightTime = 0.38f;
         [Tooltip("How high the curve rises above the straight line.")]
         [SerializeField] private float arcHeight = 0.9f;
@@ -165,7 +167,7 @@ namespace GameKit.Gameplay.Visuals
                     LocalStart = point,
                     Launched = source == null,
                     End = end,
-                    StartTime = now + leaveTime * i / count,
+                    StartTime = now + leaveTime * LaunchFraction(i / (float)count),
                     Duration = flightTime * (0.85f + Random01() * 0.3f),
                     Color = new Vector4(linear.r * shade, linear.g * shade, linear.b * shade, 1f),
                     Spin = Quaternion.Euler(Random01() * 360f, Random01() * 360f, Random01() * 360f),
@@ -176,6 +178,15 @@ namespace GameKit.Gameplay.Visuals
                     LandOffset = new Vector3(RandomSigned(), RandomSigned() * 0.5f, RandomSigned()) * landRadius
                 });
             }
+        }
+
+        /// <summary>
+        /// When (0..1 of the leave time) the grain at <paramref name="f"/> (0..1 along the stream) leaves. Front-loaded
+        /// it is the inverse of the block's ease-out vanish, so grains leave as fast as the sand disappears.
+        /// </summary>
+        private float LaunchFraction(float f)
+        {
+            return frontLoadedLaunch ? 1f - Mathf.Sqrt(Mathf.Clamp01(1f - f)) : f;
         }
 
         public void Clear()
@@ -227,7 +238,8 @@ namespace GameKit.Gameplay.Visuals
                     grains[i] = g;
                 }
 
-                float e = t * t * (3f - 2f * t);
+                // Ease-out: a grain leaves at full speed the moment the finger lifts, then slows into the jar.
+                float e = t * (2f - t);
                 float u = 1f - e;
                 Vector3 pos = u * u * g.Start + 2f * u * e * g.Control + e * e * g.End;
                 float scale = grainScale * (t > 0.8f ? Mathf.Lerp(1f, 0.6f, (t - 0.8f) / 0.2f) : 1f);

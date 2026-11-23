@@ -119,5 +119,90 @@ namespace GameKit.Tests.Gameplay
             }
             Assert.Throws<System.ArgumentException>(() => VoxelGrid.FromRunLength(new Vector3Int(2, 2, 2), runs));
         }
+
+        [Test]
+        public void Build_SphereInsideSphere_DoesNotRecordSameRootOverlap()
+        {
+            var parts = new List<MeshPart> { Sphere("Outer", Vector3.zero, 2f), Sphere("Inner", Vector3.zero, 0.8f) };
+
+            MeshVoxelResult result = MeshVoxelizer.Build(parts, 24);
+
+            Assert.AreEqual(0, result.Parents[1]);
+            CollectionAssert.IsEmpty(result.Overlaps);
+        }
+
+        [Test]
+        public void Build_KnownParentsWithAutoNest_LinksUnlinkedInnerBlocks()
+        {
+            // Outer sphere contains two unlinked inner spheres (-1) and one already-linked child: autoNestUnlinked
+            // must link the unlinked inner spheres to Outer while preserving existing links and leaving outer siblings alone.
+            var parts = new List<MeshPart>
+            {
+                Sphere("Outer", Vector3.zero, 2.4f),
+                Sphere("InnerLeft", new Vector3(-0.35f, 0f, 0f), 0.7f),
+                Sphere("InnerRight", new Vector3(0.35f, 0f, 0f), 0.7f),
+                Sphere("Outside", new Vector3(2.2f, 0f, 0f), 0.8f)
+            };
+
+            MeshVoxelResult result = MeshVoxelizer.Build(parts, 30, knownParents: new[] { -1, -1, -1, -1 }, autoNestUnlinked: true);
+
+            Assert.AreEqual(-1, result.Parents[0]);
+            Assert.AreEqual(0, result.Parents[1]);
+            Assert.AreEqual(0, result.Parents[2]);
+            Assert.AreEqual(-1, result.Parents[3]);
+            CollectionAssert.IsEmpty(result.Overlaps);
+        }
+
+        [Test]
+        public void Build_OverlappingIndependentParts_RestoresCoveredCellsWhenCollected()
+        {
+            // Small independent ball intersects the surface of a larger ball (no nesting): collecting Small must restore
+            // the cells it overwrote back to Big instead of carving a hole out of Big.
+            var parts = new List<MeshPart>
+            {
+                Sphere("Big", Vector3.zero, 2f),
+                Sphere("Small", new Vector3(0.75f, 0f, 0f), 1.0f)
+            };
+
+            MeshVoxelResult result = MeshVoxelizer.Build(parts, 24, knownParents: new[] { -1, -1 });
+
+            Assert.IsNotEmpty(result.Overlaps);
+            int beforeBig = result.CellCounts[0];
+
+            var go = new GameObject("OverlapTestRenderer");
+            Material mat = new Material(Shader.Find("Standard"));
+            try
+            {
+                var renderer = go.AddComponent<SandModelRenderer>();
+                var so = new UnityEditor.SerializedObject(renderer);
+                so.FindProperty("surfaceMaterial").objectReferenceValue = mat;
+                so.ApplyModifiedPropertiesWithoutUndo();
+                renderer.Build(result.Grid, 0.1f, new[] { Color.magenta, Color.cyan }, result.Parents, result.Overlaps);
+
+                Assert.AreEqual(beforeBig, renderer.GetBlockCellCount(0));
+                renderer.SetCollected(1, true, keepVisible: false);
+
+                Assert.Greater(renderer.GetBlockCellCount(0), beforeBig);
+                // Every cell recorded in Overlaps for Big must now belong to Big again.
+                for (int i = 0; i + 2 < result.Overlaps.Count; i += 3)
+                {
+                    if (result.Overlaps[i + 1] != 0)
+                    {
+                        continue;
+                    }
+                    int start = result.Overlaps[i];
+                    int len = result.Overlaps[i + 2];
+                    for (int k = 0; k < len; k++)
+                    {
+                        Assert.AreEqual(0, result.Grid[start + k]);
+                    }
+                }
+            }
+            finally
+            {
+                Object.DestroyImmediate(go);
+                Object.DestroyImmediate(mat);
+            }
+        }
     }
 }

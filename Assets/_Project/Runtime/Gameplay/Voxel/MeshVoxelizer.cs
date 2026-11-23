@@ -23,6 +23,12 @@ namespace GameKit.Gameplay.Voxel
         public float CellSize;
         /// <summary>Model-space position of the grid corner: cell (x,y,z) spans Origin + [x, x+1) * CellSize.</summary>
         public Vector3 Origin;
+        /// <summary>
+        /// Flat triples (startCell, underBlock, runLength) of cells where another independent part tree also occupies
+        /// the cell under the winning owner, ordered highest priority first so removing the top piece restores the
+        /// covered piece instead of leaving a hole.
+        /// </summary>
+        public List<int> Overlaps = new List<int>();
         public readonly List<string> Warnings = new List<string>();
     }
 
@@ -58,7 +64,7 @@ namespace GameKit.Gameplay.Voxel
         }
 
         public static MeshVoxelResult Build(IReadOnlyList<MeshPart> parts, int resolution, float nestThreshold = 0.9f,
-            IReadOnlyList<int> knownParents = null)
+            IReadOnlyList<int> knownParents = null, bool autoNestUnlinked = false, float minInteriorShare = 0.25f)
         {
             var result = new MeshVoxelResult();
             int partCount = parts.Count;
@@ -117,12 +123,27 @@ namespace GameKit.Gameplay.Voxel
                     int parent = knownParents[b];
                     result.Parents[b] = parent >= 0 && parent < partCount && parent != b ? parent : -1;
                 }
+                if (autoNestUnlinked)
+                {
+                    for (int b = 0; b < partCount; b++)
+                    {
+                        if (result.Parents[b] >= 0)
+                        {
+                            continue;
+                        }
+                        int parent = FindParent(b, boxes, nestThreshold, minInteriorShare);
+                        if (parent >= 0 && !LeadsTo(result.Parents, parent, b))
+                        {
+                            result.Parents[b] = parent;
+                        }
+                    }
+                }
             }
             else
             {
                 for (int b = 0; b < partCount; b++)
                 {
-                    result.Parents[b] = FindParent(b, boxes, nestThreshold);
+                    result.Parents[b] = FindParent(b, boxes, nestThreshold, 0f);
                 }
             }
 
@@ -154,7 +175,12 @@ namespace GameKit.Gameplay.Voxel
                 }
             }
             ClaimCoveredParts(grid, boxes, order);
+            if (SkinsOnTop)
+            {
+                PutSkinsOnTop(grid, boxes);
+            }
             FillLooseInside(grid, anySurface);
+            result.Overlaps = BuildOverlaps(grid, boxes, order, result.Parents);
 
             result.CellCounts = new int[partCount];
             for (int i = 0; i < cells; i++)
@@ -172,6 +198,56 @@ namespace GameKit.Gameplay.Voxel
                 }
             }
             return result;
+        }
+
+        /// <summary>
+        /// Step 5 on by default: thin parts lying on a body keep the cells their own surface passes through. Without it
+        /// the smaller-volume rule lets the body win wherever the two surfaces meet, and the thin part (a cuff, a band,
+        /// a skin) turns into a holey lattice the body shows through.
+        /// </summary>
+        public static bool SkinsOnTop = true;
+
+        /// <summary>How much more "skin" (surface cells per solid cell) a part must be to take a surface cell.</summary>
+        private const float SkinMargin = 1.5f;
+
+        /// <summary>
+        /// Cells a part's triangles pass through go to that part when it is clearly thinner (more of its cells are
+        /// surface) than the current owner. Thinnest parts are applied last, so they end on top.
+        /// </summary>
+        private static void PutSkinsOnTop(VoxelGrid grid, PartCells[] boxes)
+        {
+            var skin = new float[boxes.Length];
+            var parts = new List<int>();
+            for (int p = 0; p < boxes.Length; p++)
+            {
+                if (boxes[p].Empty || boxes[p].SolidCount == 0)
+                {
+                    continue;
+                }
+                skin[p] = boxes[p].SurfaceCount / (float)boxes[p].SolidCount;
+                parts.Add(p);
+            }
+            parts.Sort((a, b) => skin[a].CompareTo(skin[b]));
+
+            foreach (int p in parts)
+            {
+                PartCells box = boxes[p];
+                for (int z = 0; z < box.Size.z; z++)
+                for (int y = 0; y < box.Size.y; y++)
+                for (int x = 0; x < box.Size.x; x++)
+                {
+                    if (!box.Surface[x + box.Size.x * (y + box.Size.y * z)])
+                    {
+                        continue;
+                    }
+                    int i = grid.Index(box.Min.x + x, box.Min.y + y, box.Min.z + z);
+                    short owner = grid[i];
+                    if (owner >= 0 && owner != p && skin[p] > SkinMargin * skin[owner])
+                    {
+                        grid[i] = (short)p;
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -234,8 +310,12 @@ namespace GameKit.Gameplay.Voxel
                 Mathf.CeilToInt(bounds.size.z / cell) + 2);
         }
 
-        /// <summary>Smallest bigger part that holds at least <paramref name="threshold"/> of part b's inside, or -1.</summary>
-        private static int FindParent(int b, PartCells[] boxes, float threshold)
+        /// <summary>
+        /// Smallest bigger part that holds at least <paramref name="threshold"/> of part b's inside (and at least
+        /// <paramref name="minInteriorShare"/> strictly inside the outer part's interior, so flush surface decals are
+        /// not hidden), or -1.
+        /// </summary>
+        private static int FindParent(int b, PartCells[] boxes, float threshold, float minInteriorShare)
         {
             PartCells inner = boxes[b];
             if (inner.Empty || inner.SolidCount == 0)
@@ -255,8 +335,15 @@ namespace GameKit.Gameplay.Voxel
                 {
                     continue;
                 }
+                if (inner.Min.x + inner.Size.x <= outer.Min.x || outer.Min.x + outer.Size.x <= inner.Min.x ||
+                    inner.Min.y + inner.Size.y <= outer.Min.y || outer.Min.y + outer.Size.y <= inner.Min.y ||
+                    inner.Min.z + inner.Size.z <= outer.Min.z || outer.Min.z + outer.Size.z <= inner.Min.z)
+                {
+                    continue;
+                }
 
                 int shared = 0;
+                int interior = 0;
                 for (int z = 0; z < inner.Size.z; z++)
                 for (int y = 0; y < inner.Size.y; y++)
                 for (int x = 0; x < inner.Size.x; x++)
@@ -266,17 +353,38 @@ namespace GameKit.Gameplay.Voxel
                         continue;
                     }
                     int gx = inner.Min.x + x, gy = inner.Min.y + y, gz = inner.Min.z + z;
-                    if (outer.Contains(gx, gy, gz) && outer.Solid[outer.Local(gx, gy, gz)])
+                    if (outer.Contains(gx, gy, gz))
                     {
-                        shared++;
+                        int local = outer.Local(gx, gy, gz);
+                        if (outer.Solid[local])
+                        {
+                            shared++;
+                            if (!outer.Surface[local])
+                            {
+                                interior++;
+                            }
+                        }
                     }
                 }
-                if (shared >= threshold * inner.SolidCount)
+                if (shared >= threshold * inner.SolidCount && interior >= minInteriorShare * inner.SolidCount)
                 {
                     best = a;
                 }
             }
             return best;
+        }
+
+        private static bool LeadsTo(int[] parents, int from, int target)
+        {
+            for (int guard = 0; from >= 0 && from < parents.Length && guard < parents.Length; guard++)
+            {
+                if (from == target)
+                {
+                    return true;
+                }
+                from = parents[from];
+            }
+            return false;
         }
 
         private static Bounds ComputeBounds(IReadOnlyList<MeshPart> parts)
@@ -509,6 +617,166 @@ namespace GameKit.Gameplay.Voxel
                 grid[i] = owner;
                 queue.Enqueue(i);
             }
+        }
+
+        /// <summary>
+        /// Records cells occupied by another independent part tree beneath the winning owner, as compact triples
+        /// (startCell, underBlock, runLength) ordered from highest to lowest priority. When a smaller piece overlaps
+        /// a thin shell and is later collected, restoring these cells keeps the shell whole instead of leaving holes.
+        /// </summary>
+        private static List<int> BuildOverlaps(VoxelGrid grid, PartCells[] boxes, List<int> order, int[] parents)
+        {
+            var overlaps = new List<int>();
+            int partCount = boxes.Length;
+            int[] root = ComputeRoots(parents, partCount);
+            var emitted = new HashSet<long>();
+
+            // Smallest parts first (reverse of Step 4 write order) so the highest-priority underneath owner comes first.
+            for (int k = order.Count - 1; k >= 0; k--)
+            {
+                int p = order[k];
+                PartCells box = boxes[p];
+                int pRoot = root[p];
+                int runStart = -1;
+                int runLen = 0;
+
+                for (int z = 0; z < box.Size.z; z++)
+                for (int y = 0; y < box.Size.y; y++)
+                for (int x = 0; x < box.Size.x; x++)
+                {
+                    if (!box.Solid[x + box.Size.x * (y + box.Size.y * z)])
+                    {
+                        continue;
+                    }
+                    int cell = grid.Index(box.Min.x + x, box.Min.y + y, box.Min.z + z);
+                    short top = grid[cell];
+                    if (top < 0 || top >= partCount || root[top] == pRoot)
+                    {
+                        continue;
+                    }
+                    long key = ((long)cell << 16) | (uint)pRoot;
+                    if (!emitted.Add(key))
+                    {
+                        continue;
+                    }
+                    if (runLen > 0 && cell == runStart + runLen)
+                    {
+                        runLen++;
+                    }
+                    else
+                    {
+                        if (runLen > 0)
+                        {
+                            overlaps.Add(runStart);
+                            overlaps.Add(p);
+                            overlaps.Add(runLen);
+                        }
+                        runStart = cell;
+                        runLen = 1;
+                    }
+                }
+
+                if (runLen > 0)
+                {
+                    overlaps.Add(runStart);
+                    overlaps.Add(p);
+                    overlaps.Add(runLen);
+                }
+            }
+            return overlaps;
+        }
+
+        /// <summary>Remaps block indices in an overlap triple list (dropping entries whose block was removed).</summary>
+        public static List<int> RemapOverlaps(IReadOnlyList<int> overlaps, int[] remap)
+        {
+            var result = new List<int>();
+            if (overlaps == null || remap == null)
+            {
+                return result;
+            }
+            for (int i = 0; i + 2 < overlaps.Count; i += 3)
+            {
+                int block = overlaps[i + 1];
+                if (block >= 0 && block < remap.Length && remap[block] >= 0)
+                {
+                    result.Add(overlaps[i]);
+                    result.Add(remap[block]);
+                    result.Add(overlaps[i + 2]);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>Drops overlap entries that belong to the same parent chain as the cell's current owner.</summary>
+        public static List<int> FilterSameRootOverlaps(IReadOnlyList<int> overlaps, VoxelGrid grid, IReadOnlyList<int> parents)
+        {
+            var result = new List<int>();
+            if (overlaps == null || grid == null || parents == null)
+            {
+                return result;
+            }
+            int count = parents.Count;
+            int[] root = ComputeRoots(parents, count);
+            for (int i = 0; i + 2 < overlaps.Count; i += 3)
+            {
+                int start = overlaps[i];
+                int under = overlaps[i + 1];
+                int len = overlaps[i + 2];
+                if (under < 0 || under >= count || len <= 0)
+                {
+                    continue;
+                }
+                int underRoot = root[under];
+                int runStart = -1;
+                int runLen = 0;
+                for (int k = 0; k < len; k++)
+                {
+                    int cell = start + k;
+                    if (cell < 0 || cell >= grid.CellCount)
+                    {
+                        continue;
+                    }
+                    short top = grid[cell];
+                    bool keep = top >= 0 && top < count && root[top] != underRoot;
+                    if (keep)
+                    {
+                        if (runLen == 0)
+                        {
+                            runStart = cell;
+                        }
+                        runLen++;
+                    }
+                    else if (runLen > 0)
+                    {
+                        result.Add(runStart);
+                        result.Add(under);
+                        result.Add(runLen);
+                        runLen = 0;
+                    }
+                }
+                if (runLen > 0)
+                {
+                    result.Add(runStart);
+                    result.Add(under);
+                    result.Add(runLen);
+                }
+            }
+            return result;
+        }
+
+        private static int[] ComputeRoots(IReadOnlyList<int> parents, int count)
+        {
+            var root = new int[count];
+            for (int p = 0; p < count; p++)
+            {
+                int r = p;
+                for (int guard = 0; r >= 0 && r < count && parents[r] >= 0 && guard < count; guard++)
+                {
+                    r = parents[r];
+                }
+                root[p] = r;
+            }
+            return root;
         }
     }
 }

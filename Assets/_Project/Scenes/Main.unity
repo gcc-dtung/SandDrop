@@ -2463,6 +2463,7 @@ MonoBehaviour:
   grainScale: 0.055
   maxGrainsPerStream: 140
   spread: 0.22
+  frontLoadedLaunch: 1
   flightTime: 0.38
   arcHeight: 0.9
   landRadius: 0.05
@@ -2525,7 +2526,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
 --- !u!114 &910864928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4401,7 +4402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderMode: 0
   surfaceMaterial: {fileID: 2100000, guid: 774db73b2ce3c324b8c7110593bdd4f3, type: 2}
-  smoothIterations: 2
+  smoothIterations: 10
+  roundShapes: 1
   decorationMaterial: {fileID: 2100000, guid: a412a54d77719be4782fde043cdc6f83, type: 2}
   grainMaterial: {fileID: 2100000, guid: a022f65f1872a3147bc5718f4607843a, type: 2}
   grainMesh: {fileID: 0}
@@ -4410,16 +4412,15 @@ MonoBehaviour:
   sizeJitter: 0.15
   colorJitter: 0.15
   drainDuration: 0.6
-  drainRebuildInterval: 0.04
+  drainRebuildInterval: 0
+  maxConcurrentRemeshes: 3
+  maxDrainGrains: 1024
   drainNoise: 3
-  punchIn: 0.86
+  growDuration: 0.25
+  punchOnTap: 0
   punchOut: 1.12
-  punchInTime: 0.06
   punchOutTime: 0.1
   punchSettleTime: 0.16
-  pressedScale: 0.9
-  pressInTime: 0.1
-  pressOutTime: 0.28
   ghostMaterial: {fileID: 2100000, guid: 89a9d1b4d128d0c4f8f2972695e132bc, type: 2}
   ghostAlpha: 0.18
   revealFadeTime: 0.15

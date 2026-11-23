@@ -204,6 +204,128 @@ namespace GameKit.Gameplay.Voxel
             }
             return result;
         }
+
+        /// <summary>
+        /// Gives every crumb (a piece of a block of at most <paramref name="maxSize"/> cells, cut off from the rest of
+        /// that block) to the block most of its neighbours belong to. Baking pieces whose surfaces nearly overlap
+        /// leaves hundreds of such crumbs, drawn as specks of another colour. A block that is only crumbs, and crumbs
+        /// with no other block next to them, are left alone. Returns how many cells changed owner.
+        /// </summary>
+        public int MergeCrumbs(int maxSize)
+        {
+            if (maxSize <= 0)
+            {
+                return 0;
+            }
+
+            var label = new int[owner.Length];
+            int nextLabel = 0;
+            var queue = new List<int>();
+            var crumbs = new List<int[]>();
+            var votes = new Dictionary<short, int>();
+            int moved = 0;
+            int blockCount = 0;
+            foreach (short o in owner)
+            {
+                blockCount = Mathf.Max(blockCount, o + 1);
+            }
+            List<int>[] cellsByBlock = CellsByBlock(blockCount);
+
+            for (int b = 0; b < blockCount; b++)
+            {
+                crumbs.Clear();
+                int biggest = 0;
+                foreach (int start in cellsByBlock[b])
+                {
+                    if (label[start] != 0)
+                    {
+                        continue;
+                    }
+                    nextLabel++;
+                    queue.Clear();
+                    queue.Add(start);
+                    label[start] = nextLabel;
+                    for (int head = 0; head < queue.Count; head++)
+                    {
+                        Vector3Int c = Cell(queue[head]);
+                        Visit(c.x + 1, c.y, c.z, b, nextLabel, label, queue);
+                        Visit(c.x - 1, c.y, c.z, b, nextLabel, label, queue);
+                        Visit(c.x, c.y + 1, c.z, b, nextLabel, label, queue);
+                        Visit(c.x, c.y - 1, c.z, b, nextLabel, label, queue);
+                        Visit(c.x, c.y, c.z + 1, b, nextLabel, label, queue);
+                        Visit(c.x, c.y, c.z - 1, b, nextLabel, label, queue);
+                    }
+                    biggest = Mathf.Max(biggest, queue.Count);
+                    if (queue.Count <= maxSize)
+                    {
+                        crumbs.Add(queue.ToArray());
+                    }
+                }
+                if (biggest <= maxSize)
+                {
+                    continue; // All crumbs: keep the block as it is rather than lose it.
+                }
+
+                foreach (int[] crumb in crumbs)
+                {
+                    votes.Clear();
+                    foreach (int cell in crumb)
+                    {
+                        Vector3Int c = Cell(cell);
+                        Vote(c.x + 1, c.y, c.z, b, votes);
+                        Vote(c.x - 1, c.y, c.z, b, votes);
+                        Vote(c.x, c.y + 1, c.z, b, votes);
+                        Vote(c.x, c.y - 1, c.z, b, votes);
+                        Vote(c.x, c.y, c.z + 1, b, votes);
+                        Vote(c.x, c.y, c.z - 1, b, votes);
+                    }
+                    short best = Empty;
+                    int bestVotes = 0;
+                    foreach (KeyValuePair<short, int> vote in votes)
+                    {
+                        if (vote.Value > bestVotes || (vote.Value == bestVotes && vote.Key < best))
+                        {
+                            best = vote.Key;
+                            bestVotes = vote.Value;
+                        }
+                    }
+                    if (best == Empty)
+                    {
+                        continue;
+                    }
+                    foreach (int cell in crumb)
+                    {
+                        owner[cell] = best;
+                    }
+                    moved += crumb.Length;
+                }
+            }
+            return moved;
+        }
+
+        private void Visit(int x, int y, int z, int block, int value, int[] label, List<int> queue)
+        {
+            if (!InBounds(x, y, z))
+            {
+                return;
+            }
+            int i = Index(x, y, z);
+            if (label[i] == 0 && owner[i] == block)
+            {
+                label[i] = value;
+                queue.Add(i);
+            }
+        }
+
+        private void Vote(int x, int y, int z, int block, Dictionary<short, int> votes)
+        {
+            short other = this[x, y, z]; // Empty outside the grid.
+            if (other >= 0 && other != block)
+            {
+                votes.TryGetValue(other, out int count);
+                votes[other] = count + 1;
+            }
+        }
     }
 
     /// <summary>Turns block shapes into a grain grid. Inner blocks overwrite the blocks around them.</summary>

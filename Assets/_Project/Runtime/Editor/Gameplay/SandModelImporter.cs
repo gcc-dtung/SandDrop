@@ -145,6 +145,7 @@ namespace GameKit.EditorTools.Gameplay
             level.blocks = blocks;
             level.gridSize = grid.Size;
             level.bakedCells = grid.ToRunLength();
+            level.bakedOverlaps = MeshVoxelizer.RemapOverlaps(result.Overlaps, remap);
             level.bakeResolution = resolution;
             level.grainSize = TargetWorldSize / Mathf.Max(grid.Size.x, Mathf.Max(grid.Size.y, grid.Size.z));
             if (level.modelRotation == Vector3.zero)

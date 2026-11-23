@@ -70,9 +70,16 @@ Shader "GameKit/SandSurface"
         void surf(Input IN, inout SurfaceOutput o)
         {
             float3 p = IN.objPos * _GrainScale;
-            // Two octaves: grains + slightly larger clumps.
-            float grain = ValueNoise(p) * 0.65 + ValueNoise(p * 0.37 + 11.0) * 0.35;
-            float speck = step(1.0 - _SpeckDensity, Hash31(floor(p * 1.7)));
+            // Anti-aliasing for the procedural pattern: fwidth(p) is how many noise cells one pixel covers.
+            // Once a cell is smaller than ~a pixel the noise would just shimmer / break up (scene view, far zoom),
+            // so each layer fades to its average instead.
+            float footprint = max(fwidth(p.x), max(fwidth(p.y), fwidth(p.z)));
+            float grainFade = 1.0 - smoothstep(0.35, 1.0, footprint);
+            float clumpFade = 1.0 - smoothstep(0.35 / 0.37, 1.0 / 0.37, footprint);
+            float speckFade = 1.0 - smoothstep(0.2, 0.6, footprint * 1.7);
+            // Two octaves: grains + slightly larger clumps (average of value noise is 0.5).
+            float grain = lerp(0.5, ValueNoise(p), grainFade) * 0.65 + lerp(0.5, ValueNoise(p * 0.37 + 11.0), clumpFade) * 0.35;
+            float speck = lerp(_SpeckDensity, step(1.0 - _SpeckDensity, Hash31(floor(p * 1.7))), speckFade);
             half shade = 1.0 + (grain - 0.5) * 2.0 * _GrainStrength - speck * _SpeckStrength;
             half3 c = _Color.rgb;
             half lum = dot(c, half3(0.299, 0.587, 0.114));

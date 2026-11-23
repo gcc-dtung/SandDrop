@@ -1,19 +1,18 @@
-#if !DISABLE_CHEATS && !DISABLE_SRDEBUGGER
-using System.ComponentModel;
+#if !DISABLE_CHEATS
 using Cysharp.Threading.Tasks;
 using GameKit.App;
 using GameKit.Core.Foundation.Logging;
 using GameKit.UI.Framework;
-using SRDebugger;
 using UnityEngine;
 
 namespace GameKit.Cheat
 {
     /// <summary>
-    /// Base cheats shown in the SRDebugger "Options" tab (open it with a triple tap in the top-left corner).
-    /// Created at runtime, never placed in a scene, and the whole file is compiled out with DISABLE_CHEATS
-    /// (Tools/GameKit/Cheats) or when SRDebugger is disabled, so release builds contain none of it.
-    /// Feature cheats: add another class like this one in Runtime/Cheat, same #if, and register it in <see cref="Install"/>.
+    /// Base cheats in the <see cref="CheatPanel"/> (Editor toolbar "Cheats"; on a device: pause, then tap "Paused" 3 times).
+    /// Created at runtime, never placed in a scene, and every cheat file is compiled out with DISABLE_CHEATS
+    /// (Tools/GameKit/Cheats), so release builds contain none of it.
+    /// Feature cheats: add another class like <see cref="SandCheats"/> in Runtime/Cheat, same #if, with a
+    /// <c>Register(CheatMenu)</c> method, and call it from <see cref="Install"/>.
     /// </summary>
     public sealed class GameCheats
     {
@@ -27,11 +26,6 @@ namespace GameKit.Cheat
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Install()
         {
-            if (!Settings.Instance.IsEnabled)
-            {
-                return;
-            }
-
             // Development-only lookup, once at startup.
             var bootstrap = Object.FindObjectOfType<GameBootstrap>();
             if (bootstrap == null || bootstrap.Services == null)
@@ -40,74 +34,66 @@ namespace GameKit.Cheat
                 return;
             }
 
-            SRDebug.Instance.AddOptionContainer(new GameCheats(bootstrap.Services));
-
+            var menu = new CheatMenu();
             var level = Object.FindObjectOfType<GameKit.Gameplay.Level.LevelController>();
             if (level != null)
             {
-                SRDebug.Instance.AddOptionContainer(new SandCheats(bootstrap.Services, level));
+                new SandCheats(bootstrap.Services, level).Register(menu);
             }
+            new GameCheats(bootstrap.Services).Register(menu);
+            CheatMenu.Current = menu;
+            CheatPanel.Create(menu);
+            AddPauseTrigger(bootstrap.Services, level);
         }
 
-        // ---- Game ----
-
-        [Category("Game"), DisplayName("Time Scale"), NumberRange(0, 4), Increment(0.25), Sort(0)]
-        public float TimeScale
+        /// <summary>On a device: pause, then tap the "Paused" title 3 times to open the panel.</summary>
+        private static void AddPauseTrigger(GameServices services, GameKit.Gameplay.Level.LevelController level)
         {
-            get => Time.timeScale;
-            set => Time.timeScale = value;
+            ConfirmPopup popup = services.Popups != null ? services.Popups.Get<ConfirmPopup>() : null;
+            if (popup == null || popup.TitleText == null || level == null)
+            {
+                Log.Warning("Cheat", "No pause popup title found; the cheat panel opens only from the Editor toolbar.");
+                return;
+            }
+            popup.TitleText.raycastTarget = true; // Taps on the title must reach the trigger.
+            var trigger = popup.TitleText.gameObject.AddComponent<CheatTapTrigger>();
+            trigger.Condition = () => level != null && level.IsPaused;
         }
 
-        [Category("Game"), DisplayName("60 FPS (off = 30)"), Sort(1)]
-        public bool SixtyFps
+        private void Register(CheatMenu menu)
         {
-            get => Application.targetFrameRate >= 60;
-            set => Application.targetFrameRate = value ? 60 : 30;
+            menu.Stepper("Game", "Time Scale", 0f, 4f, 0.25f, () => Time.timeScale, v => Time.timeScale = v);
+            menu.Toggle("Game", "60 FPS (off = 30)", () => Application.targetFrameRate >= 60,
+                v => Application.targetFrameRate = v ? 60 : 30);
+
+            menu.Button("Save", "Write Save Now", WriteSave);
+            menu.Button("Save", "Delete Save (restart after)", DeleteSave);
+
+            menu.Stepper("Audio", "Music Volume", 0f, 1f, 0.1f,
+                () => services.Audio != null ? services.Audio.MusicVolume : 0f,
+                v => { if (services.Audio != null) services.Audio.MusicVolume = v; });
+            menu.Stepper("Audio", "SFX Volume", 0f, 1f, 0.1f,
+                () => services.Audio != null ? services.Audio.SfxVolume : 0f,
+                v => { if (services.Audio != null) services.Audio.SfxVolume = v; });
+
+            menu.Button("UI", "Close All Popups", () => services.Popups?.CloseAll());
+            menu.Button("UI", "Test Confirm Popup", TestConfirmPopup, closePanel: true);
         }
 
-        // ---- Save ----
-
-        [Category("Save"), DisplayName("Write Save Now"), Sort(0)]
-        public void WriteSave()
+        private void WriteSave()
         {
             services.Save.Flush();
             Log.Info("Cheat", "Save written.");
         }
 
-        [Category("Save"), DisplayName("Delete Save (restart after)"), Sort(1)]
-        public void DeleteSave()
+        private void DeleteSave()
         {
             services.Save.DeleteAll();
             services.Save.Flush();
             Log.Warning("Cheat", "Save deleted. Restart the game to start from a fresh save.");
         }
 
-        // ---- Audio ----
-
-        [Category("Audio"), DisplayName("Music Volume"), NumberRange(0, 1), Increment(0.1), Sort(0)]
-        public float MusicVolume
-        {
-            get => services.Audio != null ? services.Audio.MusicVolume : 0f;
-            set { if (services.Audio != null) services.Audio.MusicVolume = value; }
-        }
-
-        [Category("Audio"), DisplayName("SFX Volume"), NumberRange(0, 1), Increment(0.1), Sort(1)]
-        public float SfxVolume
-        {
-            get => services.Audio != null ? services.Audio.SfxVolume : 0f;
-            set { if (services.Audio != null) services.Audio.SfxVolume = value; }
-        }
-
-        // ---- UI ----
-
-        [Category("UI"), DisplayName("Close All Popups"), Sort(0)]
-        public void CloseAllPopups()
-        {
-            services.Popups?.CloseAll();
-        }
-
-        [Category("UI"), DisplayName("Test Confirm Popup"), Sort(1)]
-        public void TestConfirmPopup()
+        private void TestConfirmPopup()
         {
             var popup = services.Popups != null ? services.Popups.Get<ConfirmPopup>() : null;
             if (popup == null)
@@ -116,7 +102,6 @@ namespace GameKit.Cheat
                 return;
             }
 
-            SRDebug.Instance.HideDebugPanel();
             popup.AskAsync("Cheat test: does the popup work?", "GameKit", "Yes", "No")
                 .ContinueWith(answer => Log.Info("Cheat", "ConfirmPopup answered: " + answer))
                 .Forget();

@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using GameKit.Core.Foundation.Logging;
 using UnityEngine;
@@ -30,8 +32,13 @@ namespace GameKit.Gameplay.Voxel
 
         [Header("Smooth")]
         [SerializeField] private Material surfaceMaterial;
-        [Tooltip("Laplacian smoothing passes on each block mesh.")]
-        [SerializeField, Range(0, 6)] private int smoothIterations = 2;
+        [Tooltip("Taubin smoothing iterations (shrink + inflate) on each block mesh; more = fewer wiggles on thin tails.")]
+        [SerializeField, Range(0, 12)] private int smoothIterations = 6;
+        [Tooltip("Off: straight blocks on the voxel faces (no blur, no smoothing), so curved, bulging surfaces never run over " +
+                 "the layers next to them. On: rounded sand blobs (blur + smoothIterations).")]
+        [SerializeField] private bool roundShapes;
+
+        private int SmoothPasses => roundShapes ? smoothIterations : 0;
 
         [Header("Decorations")]
         [Tooltip("Material for the small meshes on the model (eyes, buttons...); coloured per decoration through _Color.")]
@@ -50,21 +57,26 @@ namespace GameKit.Gameplay.Voxel
         [Tooltip("Random brightness spread per grain.")]
         [SerializeField, Range(0f, 0.4f)] private float colorJitter = 0.15f;
         [Header("Drain (collected block erodes away from the tap point)")]
-        [SerializeField] private float drainDuration = 0.6f;
+        [Tooltip("Seconds for a tapped block to vanish. Most of it goes in the first frames (ease-out), so the tap answers at once.")]
+        [SerializeField] private float drainDuration = 0.35f;
         [Tooltip("Seconds between mesh rebuilds while a block drains.")]
-        [SerializeField] private float drainRebuildInterval = 0.04f;
+        [SerializeField] private float drainRebuildInterval = 0f;
+        [Tooltip("Most draining blocks remeshed at the same time on worker threads (each block keeps one remesh going).")]
+        [SerializeField, Min(1)] private int maxConcurrentRemeshes = 3;
+        [Tooltip("Most grain positions handed to the flying sand per drained block (it only flies a sample of them).")]
+        [SerializeField, Min(16)] private int maxDrainGrains = 1024;
         [Tooltip("Random spread (in cells) of the eroding edge so it looks like sand, not a sphere.")]
         [SerializeField] private float drainNoise = 3f;
-        [Header("Tap feedback: punch (squash in, spring out, settle)")]
-        [SerializeField] private float punchIn = 0.86f;
+        [Header("Inner layer fills the outer one")]
+        [Tooltip("Seconds for an inner block to grow into the cells of the outer block that was just tapped.")]
+        [SerializeField] private float growDuration = 0.25f;
+
+        [Header("Tap feedback: punch (spring out, settle)")]
+        [Tooltip("Off: on release the block stops where the press left it and drains at once (no spring). Temporarily off for testing.")]
+        [SerializeField] private bool punchOnTap;
         [SerializeField] private float punchOut = 1.12f;
-        [SerializeField] private float punchInTime = 0.06f;
         [SerializeField] private float punchOutTime = 0.1f;
         [SerializeField] private float punchSettleTime = 0.16f;
-        [Tooltip("Scale of the block under the finger while pressed / held.")]
-        [SerializeField] private float pressedScale = 0.9f;
-        [SerializeField] private float pressInTime = 0.1f;
-        [SerializeField] private float pressOutTime = 0.28f;
 
         [Header("Hold to see inside")]
         [Tooltip("Transparent material for outer blocks while the player holds (GameKit/SandGhost).")]
@@ -94,8 +106,6 @@ namespace GameKit.Gameplay.Voxel
         private int[] hiddenUnderParent;
         private Vector3[] blockOffsets;
         private Vector3 gridCenter;
-        /// <summary>Cells on the outside of a block (next to empty space or another block), for measuring what is left.</summary>
-        private readonly List<int> boundaryCells = new List<int>();
         private Tween[] shakeTweens;
         private Tween[] popTweens;
         private Vector3[] blockCenters;
@@ -120,19 +130,74 @@ namespace GameKit.Gameplay.Voxel
             Gone
         }
 
-        private sealed class Drain
+        /// <summary>A block whose mesh changes over time: built from a window of <see cref="Order"/>.</summary>
+        private abstract class MeshJob
         {
             public int[] Order;
             public float Start;
+            /// <summary>A remesh of this block is running (the next one starts once it is uploaded).</summary>
+            public bool Remeshing;
+        }
+
+        /// <summary>Collected block eroding away: drawn from Order[Removed..].</summary>
+        private sealed class Drain : MeshJob
+        {
             public int Removed;
             public float LastBuild;
         }
 
+        /// <summary>Inner block filling the outer block's cells: drawn from Order[..Shown].</summary>
+        private sealed class Grow : MeshJob
+        {
+            public int Shown;
+            /// <summary>Cells in the mesh on screen.</summary>
+            public int Applied;
+        }
+
         private BlockPhase[] phases;
         private Drain[] drains;
+        private Grow[] grows;
+        private readonly List<int> growQueue = new List<int>();
+        private readonly Dictionary<int, List<int>> growAdded = new Dictionary<int, List<int>>();
+        private readonly List<Vector3> outlineScratch = new List<Vector3>();
+        /// <summary>
+        /// Underneath block stack per overlapped cell (highest priority first) from baked overlaps, so removing an
+        /// overlapping piece restores the covered piece instead of leaving a hole in thin shells.
+        /// </summary>
+        private Dictionary<int, int> overlapHead;
+        private short[] overlapBlock;
+        private int[] overlapNext;
+        /// <summary>Blocks touching each block (refreshed when a block grows), to remesh them when it is gone.</summary>
+        private int[][] blockNeighbours;
+        /// <summary>Blocks hidden right under each block (levels that hide inner blocks), for <see cref="MeshCells"/>.</summary>
+        private List<int>[] childBlocks;
+        private readonly HashSet<int> neighbourScratch = new HashSet<int>();
         private bool[] drainedCells;
-        private readonly List<Vector3> meshVertices = new List<Vector3>();
-        private readonly List<int> meshTriangles = new List<int>();
+        /// <summary>Grid cells of each block in index order, found once per <see cref="Build"/> (no full-grid scans later).</summary>
+        private List<int>[] blockCells;
+        /// <summary>Block the drain round-robin starts from next frame, so every draining block gets its turn.</summary>
+        private int nextDrainBlock;
+        /// <summary>Box (grid cells, inclusive) of each block's boundary cells; empty block = min &gt; max.</summary>
+        private Vector3Int[] blockBoxMin;
+        private Vector3Int[] blockBoxMax;
+        /// <summary>Local position of each block's boundary cells, for measuring the outline of what is left.</summary>
+        private Vector3[][] blockOutlines;
+
+        /// <summary>Buffers for one worker-thread remesh; the main thread only uploads the result.</summary>
+        private sealed class RemeshSlot
+        {
+            public readonly SurfaceNets.Workspace Workspace = new SurfaceNets.Workspace();
+            public readonly List<Vector3> Vertices = new List<Vector3>();
+            public readonly List<Vector3> Normals = new List<Vector3>();
+            public readonly List<int> Triangles = new List<int>();
+            public bool Busy;
+        }
+
+        private readonly List<RemeshSlot> remeshSlots = new List<RemeshSlot>();
+        /// <summary>Bumped by every Build / Clear so a remesh started for the previous model is thrown away.</summary>
+        private int buildVersion;
+        private float[] drainKeys = Array.Empty<float>();
+        private int[] drainBuckets = Array.Empty<int>();
 
         public VoxelGrid Grid => grid;
         public float GrainSize => grainSize;
@@ -142,9 +207,12 @@ namespace GameKit.Gameplay.Voxel
         /// <summary>
         /// Shows a new model. <paramref name="blockColors"/> has one colour per block. With
         /// <paramref name="hideInnerParents"/> (parent per block) a block is not drawn or hit while its parent is still
-        /// there, so thin outer layers never let the colour inside show through.
+        /// there, so thin outer layers never let the colour inside show through. With <paramref name="overlapRuns"/>
+        /// (triples startCell, underBlock, runLength) cells overwritten by another independent piece are restored to
+        /// the covered piece when the overlapping piece is collected.
         /// </summary>
-        public void Build(VoxelGrid newGrid, float newGrainSize, Color[] newBlockColors, int[] hideInnerParents = null)
+        public void Build(VoxelGrid newGrid, float newGrainSize, Color[] newBlockColors, int[] hideInnerParents = null,
+            IReadOnlyList<int> overlapRuns = null)
         {
             KillShakes();
             DestroyBlockMeshes();
@@ -166,9 +234,27 @@ namespace GameKit.Gameplay.Voxel
             }
             phases = new BlockPhase[count];
             drains = new Drain[count];
+            grows = new Grow[count];
             drainedCells = newGrid != null ? new bool[newGrid.CellCount] : null;
+            blockCells = newGrid != null ? newGrid.CellsByBlock(count) : null;
+            InitOverlaps(overlapRuns, newGrid?.CellCount ?? 0, count);
+            childBlocks = null;
+            if (hiddenUnderParent != null)
+            {
+                childBlocks = new List<int>[count];
+                for (int b = 0; b < count; b++)
+                {
+                    int parent = hiddenUnderParent[b];
+                    if (parent >= 0 && parent < count && parent != b)
+                    {
+                        (childBlocks[parent] ??= new List<int>()).Add(b);
+                    }
+                }
+            }
+            nextDrainBlock = 0;
+            buildVersion++;
             gridCenter = OccupiedCenter(newGrid);
-            FindBoundaryCells();
+            InitBlockOutlines(count);
             blockCenters = BlockCenters(newGrid, count);
             cellsDirty = true;
 
@@ -202,13 +288,48 @@ namespace GameKit.Gameplay.Voxel
             KillShakes();
             DestroyBlockMeshes();
             grid = null;
-            boundaryCells.Clear();
+            blockCells = null;
+            blockOutlines = null;
+            overlapHead = null;
+            overlapBlock = null;
+            overlapNext = null;
+            buildVersion++;
             decorations.Clear();
             visibleCells.Clear();
             batchCounts.Clear();
         }
 
         public bool IsCollected(int block) => collected != null && block >= 0 && block < collected.Length && collected[block];
+
+        // ---- Read-only block info (Editor tools: Tools/GameKit/Sand/Block Picker) ----
+
+        public int BlockCount => collected?.Length ?? 0;
+
+        private bool ValidBlock(int block) => collected != null && block >= 0 && block < collected.Length;
+
+        /// <summary>Hidden layer: its outer block is still on the model, so it is drawn as part of that block.</summary>
+        public bool IsHiddenLayer(int block) => ValidBlock(block) && IsBuried(block);
+
+        public Color GetBlockColor(int block) => ValidBlock(block) && blockColors != null ? blockColors[block] : Color.clear;
+
+        public int GetBlockCellCount(int block) => ValidBlock(block) && blockCells != null ? blockCells[block].Count : 0;
+
+        /// <summary>On the model, waiting to drain, draining or gone.</summary>
+        public string GetBlockPhase(int block) => ValidBlock(block) && phases != null ? phases[block].ToString() : "-";
+
+        /// <summary>Box around the block's outer cells, in this transform's local space. False for an empty block.</summary>
+        public bool TryGetBlockBounds(int block, out Bounds localBounds)
+        {
+            localBounds = default;
+            if (!ValidBlock(block) || blockBoxMin == null || blockBoxMin[block].x > blockBoxMax[block].x)
+            {
+                return false;
+            }
+            Vector3 min = CellToLocal(blockBoxMin[block]) - Vector3.one * (grainSize * 0.5f);
+            Vector3 max = CellToLocal(blockBoxMax[block]) + Vector3.one * (grainSize * 0.5f);
+            localBounds = new Bounds((min + max) * 0.5f, max - min);
+            return true;
+        }
 
         /// <summary>
         /// Removes (or restores) a block. With <paramref name="keepVisible"/> the block stops counting for taps and
@@ -223,13 +344,274 @@ namespace GameKit.Gameplay.Voxel
             collected[block] = value;
             phases[block] = !value ? BlockPhase.Present
                 : keepVisible && renderMode == SandRenderMode.Smooth ? BlockPhase.WaitingDrain : BlockPhase.Gone;
+            if (phases[block] == BlockPhase.Gone)
+            {
+                RefreshNeighbours(block);
+            }
+            if (grows != null)
+            {
+                grows[block] = null; // A block tapped while still growing drains from its full shape.
+            }
+            if (value)
+            {
+                GrowChildrenInto(block);
+                RestoreOverlapped(block);
+            }
             cellsDirty = true;
         }
 
         /// <summary>
+        /// The blocks right inside <paramref name="parent"/> take over its cells (each cell goes to the nearest inner
+        /// block, spreading cell by cell from them), so the inner layer ends up the size and shape of the outer one.
+        /// Their meshes grow outwards over <c>growDuration</c>. Only for levels that hide inner blocks.
+        /// </summary>
+        private void GrowChildrenInto(int parent)
+        {
+            if (hiddenUnderParent == null || grid == null || blockCells == null)
+            {
+                return;
+            }
+
+            growQueue.Clear();
+            growAdded.Clear();
+            for (int b = 0; b < hiddenUnderParent.Length; b++)
+            {
+                if (hiddenUnderParent[b] == parent && !collected[b] && blockCells[b].Count > 0)
+                {
+                    growAdded[b] = new List<int>();
+                    growQueue.AddRange(blockCells[b]);
+                }
+            }
+            if (growAdded.Count == 0)
+            {
+                return;
+            }
+
+            // Breadth-first from every inner cell at once: parent cells are claimed in order of distance.
+            for (int head = 0; head < growQueue.Count; head++)
+            {
+                int cell = growQueue[head];
+                short owner = grid[cell];
+                Vector3Int c = grid.Cell(cell);
+                Claim(c.x + 1, c.y, c.z, parent, owner);
+                Claim(c.x - 1, c.y, c.z, parent, owner);
+                Claim(c.x, c.y + 1, c.z, parent, owner);
+                Claim(c.x, c.y - 1, c.z, parent, owner);
+                Claim(c.x, c.y, c.z + 1, parent, owner);
+                Claim(c.x, c.y, c.z - 1, parent, owner);
+            }
+
+            float now = Time.time;
+            foreach (KeyValuePair<int, List<int>> pair in growAdded)
+            {
+                int b = pair.Key;
+                List<int> added = pair.Value;
+                if (added.Count == 0)
+                {
+                    continue;
+                }
+                // Grow from what is on screen (own cells + its hidden layers) out into the outer block's cells.
+                var order = new List<int>(blockCells[b]);
+                AddHiddenLayers(b, order);
+                int shown = order.Count;
+                order.AddRange(added);
+                blockCells[b].AddRange(added);
+                RefreshBlockOutline(b);
+                blockCenters[b] = BlockCenter(b);
+                if (renderMode == SandRenderMode.Smooth)
+                {
+                    grows[b] = new Grow { Order = order.ToArray(), Start = now, Shown = shown, Applied = shown };
+                }
+            }
+            growQueue.Clear();
+            growAdded.Clear();
+        }
+
+        private void Claim(int x, int y, int z, int parent, short owner)
+        {
+            if (!grid.InBounds(x, y, z))
+            {
+                return;
+            }
+            int i = grid.Index(x, y, z);
+            if (grid[i] != parent)
+            {
+                return;
+            }
+            grid[i] = owner;
+            growQueue.Add(i);
+            growAdded[owner].Add(i);
+        }
+
+        private void InitOverlaps(IReadOnlyList<int> runs, int cellCount, int blockCount)
+        {
+            overlapHead = null;
+            overlapBlock = null;
+            overlapNext = null;
+            if (runs == null || runs.Count < 3 || cellCount <= 0 || blockCount <= 0)
+            {
+                return;
+            }
+            int totalNodes = 0;
+            for (int i = 0; i + 2 < runs.Count; i += 3)
+            {
+                int len = runs[i + 2];
+                if (len > 0)
+                {
+                    totalNodes += len;
+                }
+            }
+            if (totalNodes == 0)
+            {
+                return;
+            }
+            overlapHead = new Dictionary<int, int>(totalNodes);
+            overlapBlock = new short[totalNodes];
+            overlapNext = new int[totalNodes];
+            int node = 0;
+            // Push in reverse so walking from overlapHead visits underneath blocks in highest-to-lowest priority order.
+            for (int i = (runs.Count / 3) * 3 - 3; i >= 0; i -= 3)
+            {
+                int start = runs[i];
+                int block = runs[i + 1];
+                int len = runs[i + 2];
+                if (block < 0 || block >= blockCount || len <= 0)
+                {
+                    continue;
+                }
+                int end = Mathf.Min(cellCount, start + len);
+                for (int c = Mathf.Max(0, start); c < end; c++)
+                {
+                    overlapBlock[node] = (short)block;
+                    overlapNext[node] = overlapHead.TryGetValue(c, out int prev) ? prev : -1;
+                    overlapHead[c] = node++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gives back cells of <paramref name="removed"/> that were not claimed by its own children to any independent
+        /// block that originally also occupied those cells, so removing an overlapping piece never leaves a hole in a
+        /// thin layer underneath it.
+        /// </summary>
+        private void RestoreOverlapped(int removed)
+        {
+            if (overlapHead == null || grid == null || blockCells == null)
+            {
+                return;
+            }
+
+            growAdded.Clear();
+            foreach (int cell in blockCells[removed])
+            {
+                if (grid[cell] != removed || !overlapHead.TryGetValue(cell, out int node))
+                {
+                    continue;
+                }
+                while (node >= 0)
+                {
+                    int candidate = ResolveUnderBlock(overlapBlock[node]);
+                    if (candidate >= 0 && candidate != removed)
+                    {
+                        grid[cell] = (short)candidate;
+                        if (!growAdded.TryGetValue(candidate, out List<int> list))
+                        {
+                            growAdded[candidate] = list = new List<int>();
+                        }
+                        list.Add(cell);
+                        break;
+                    }
+                    node = overlapNext[node];
+                }
+            }
+
+            if (growAdded.Count == 0)
+            {
+                return;
+            }
+
+            // Snapshot each affected visible block's cells before appending, so Smooth mode can grow seamlessly into
+            // the restored cells while the removed block drains.
+            Dictionary<int, List<int>> existingByVisible = null;
+            Dictionary<int, List<int>> addedByVisible = null;
+            if (renderMode == SandRenderMode.Smooth)
+            {
+                existingByVisible = new Dictionary<int, List<int>>();
+                addedByVisible = new Dictionary<int, List<int>>();
+                foreach (KeyValuePair<int, List<int>> pair in growAdded)
+                {
+                    int vis = VisibleBlock(pair.Key);
+                    if (vis < 0 || vis >= collected.Length || collected[vis] || phases[vis] != BlockPhase.Present)
+                    {
+                        continue;
+                    }
+                    if (!existingByVisible.ContainsKey(vis))
+                    {
+                        existingByVisible[vis] = new List<int>(MeshCells(vis));
+                        addedByVisible[vis] = new List<int>();
+                    }
+                    addedByVisible[vis].AddRange(pair.Value);
+                }
+            }
+
+            foreach (KeyValuePair<int, List<int>> pair in growAdded)
+            {
+                int b = pair.Key;
+                blockCells[b].AddRange(pair.Value);
+                RefreshBlockOutline(b);
+                blockCenters[b] = BlockCenter(b);
+            }
+
+            if (existingByVisible != null)
+            {
+                float now = Time.time;
+                bool instant = phases[removed] == BlockPhase.Gone;
+                foreach (KeyValuePair<int, List<int>> pair in existingByVisible)
+                {
+                    int vis = pair.Key;
+                    List<int> order = pair.Value;
+                    int shown = order.Count;
+                    order.AddRange(addedByVisible[vis]);
+                    Grow prev = grows[vis];
+                    int applied = instant ? 0 : prev != null ? Mathf.Min(shown, prev.Applied) : shown;
+                    grows[vis] = new Grow
+                    {
+                        Order = order.ToArray(),
+                        Start = instant ? now - growDuration : now,
+                        Shown = instant ? order.Count : shown,
+                        Applied = applied
+                    };
+                }
+            }
+
+            growAdded.Clear();
+        }
+
+        private int ResolveUnderBlock(int block)
+        {
+            if (block < 0 || block >= collected.Length)
+            {
+                return -1;
+            }
+            if (!collected[block])
+            {
+                return block;
+            }
+            // If the covered block was already collected and had a single inner copy layer that grew into its shape,
+            // restore the overlapped cells to that active layer.
+            int guard = 0;
+            while (collected[block] && childBlocks != null && childBlocks[block] != null && childBlocks[block].Count == 1 && guard++ < 64)
+            {
+                block = childBlocks[block][0];
+            }
+            return !collected[block] ? block : -1;
+        }
+
+        /// <summary>
         /// Starts eroding a collected block from <paramref name="fromCell"/> outwards over <see cref="DrainDuration"/>.
-        /// Fills <paramref name="localGrains"/> with the block's grain positions (this transform's local space) in the
-        /// order they leave, so flying sand can follow the eroding edge.
+        /// Fills <paramref name="localGrains"/> with grain positions of the block (this transform's local space, at most
+        /// <c>maxDrainGrains</c>, evenly spread over the drain) in the order they leave, so flying sand can follow the
+        /// eroding edge.
         /// </summary>
         public void BeginDrain(int block, Vector3Int fromCell, List<Vector3> localGrains)
         {
@@ -239,25 +621,17 @@ namespace GameKit.Gameplay.Voxel
                 return;
             }
 
-            var cells = new List<int>();
-            for (int i = 0; i < grid.CellCount; i++)
+            int[] order = DrainOrder(blockCells[block], fromCell);
+            int samples = Mathf.Min(order.Length, maxDrainGrains);
+            float step = order.Length / (float)Mathf.Max(1, samples);
+            // Grains leave from where the block is drawn now (squashed by the press, moved by a shake).
+            Vector3 pivot = blockCenters[block];
+            float scale = blockScales[block];
+            Vector3 offset = blockOffsets[block];
+            for (int i = 0; i < samples; i++)
             {
-                if (grid[i] == block)
-                {
-                    cells.Add(i);
-                }
-            }
-            int[] order = cells.ToArray();
-            var keys = new float[order.Length];
-            for (int i = 0; i < order.Length; i++)
-            {
-                Vector3Int c = grid.Cell(order[i]);
-                keys[i] = Vector3.Distance(c, fromCell) + Unit(Hash((uint)order[i]), 8) * drainNoise;
-            }
-            System.Array.Sort(keys, order);
-            foreach (int cell in order)
-            {
-                localGrains.Add(CellToLocal(grid.Cell(cell)));
+                Vector3 p = CellToLocal(grid.Cell(order[Mathf.Min(order.Length - 1, (int)(i * step))]));
+                localGrains.Add(pivot + (p - pivot) * scale + offset);
             }
 
             if (phases[block] == BlockPhase.WaitingDrain)
@@ -265,6 +639,54 @@ namespace GameKit.Gameplay.Voxel
                 phases[block] = BlockPhase.Draining;
                 drains[block] = new Drain { Order = order, Start = Time.time, LastBuild = -1f };
             }
+        }
+
+        /// <summary>
+        /// Cells of a block ordered by distance from <paramref name="fromCell"/> plus noise (so the edge looks like
+        /// sand, not a sphere). Bucket sort in steps of a quarter cell: linear time, so a big block does not stall
+        /// the tap frame.
+        /// </summary>
+        private int[] DrainOrder(List<int> cells, Vector3Int fromCell)
+        {
+            const float bucketsPerCell = 4f;
+            int n = cells.Count;
+            var order = new int[n];
+            if (n == 0)
+            {
+                return order;
+            }
+            if (drainKeys.Length < n)
+            {
+                drainKeys = new float[n + n / 4];
+            }
+            float maxKey = 0f;
+            for (int i = 0; i < n; i++)
+            {
+                Vector3Int c = grid.Cell(cells[i]);
+                float key = Vector3.Distance(c, fromCell) + Unit(Hash((uint)cells[i]), 8) * drainNoise;
+                drainKeys[i] = key;
+                maxKey = Mathf.Max(maxKey, key);
+            }
+
+            int bucketCount = (int)(maxKey * bucketsPerCell) + 2;
+            if (drainBuckets.Length < bucketCount)
+            {
+                drainBuckets = new int[bucketCount + bucketCount / 4];
+            }
+            Array.Clear(drainBuckets, 0, bucketCount);
+            for (int i = 0; i < n; i++)
+            {
+                drainBuckets[(int)(drainKeys[i] * bucketsPerCell) + 1]++;
+            }
+            for (int k = 1; k < bucketCount; k++)
+            {
+                drainBuckets[k] += drainBuckets[k - 1];
+            }
+            for (int i = 0; i < n; i++)
+            {
+                order[drainBuckets[(int)(drainKeys[i] * bucketsPerCell)]++] = cells[i];
+            }
+            return order;
         }
 
         /// <summary>
@@ -304,7 +726,7 @@ namespace GameKit.Gameplay.Voxel
             }
             if (!IsCollected(b))
             {
-                return !IsBuried(b);
+                return true; // A hidden layer's cell is drawn as part of the block around it.
             }
             BlockPhase phase = phases[b];
             return phase == BlockPhase.WaitingDrain || (phase == BlockPhase.Draining && !drainedCells[cell]);
@@ -321,22 +743,19 @@ namespace GameKit.Gameplay.Voxel
             Vector3 origin = WorldToGrid(worldRay.origin);
             Vector3 direction = transform.InverseTransformDirection(worldRay.direction);
             int cell = VoxelRaycaster.Raycast(grid.Size, origin, direction, IsSolid);
-            return cell >= 0 ? grid[cell] : -1;
+            return cell >= 0 ? VisibleBlock(grid[cell]) : -1;
         }
 
         /// <summary>Adds the world position of every grain of the block (visible or buried).</summary>
         public void GetGrainWorldPositions(int block, List<Vector3> result)
         {
-            if (grid == null)
+            if (grid == null || blockCells == null || block < 0 || block >= blockCells.Length)
             {
                 return;
             }
-            for (int i = 0; i < grid.CellCount; i++)
+            foreach (int i in blockCells[block])
             {
-                if (grid[i] == block)
-                {
-                    result.Add(transform.TransformPoint(CellToLocal(grid.Cell(i))));
-                }
+                result.Add(transform.TransformPoint(CellToLocal(grid.Cell(i))));
             }
         }
 
@@ -366,12 +785,11 @@ namespace GameKit.Gameplay.Voxel
             {
                 return false;
             }
-            foreach (int i in boundaryCells)
+            for (int b = 0; b < blockOutlines.Length; b++)
             {
-                int owner = grid[i];
-                if (owner < collected.Length && !collected[owner])
+                if (!collected[b])
                 {
-                    localPoints.Add(CellToLocal(grid.Cell(i)));
+                    localPoints.AddRange(blockOutlines[b]);
                 }
             }
             if (localPoints.Count == 0)
@@ -400,32 +818,128 @@ namespace GameKit.Gameplay.Voxel
             return true;
         }
 
-        private void FindBoundaryCells()
+        /// <summary>Box and outline (boundary cells) of every block.</summary>
+        private void InitBlockOutlines(int count)
         {
-            boundaryCells.Clear();
-            if (grid == null)
+            blockBoxMin = new Vector3Int[count];
+            blockBoxMax = new Vector3Int[count];
+            blockOutlines = new Vector3[count][];
+            blockNeighbours = new int[count][];
+            for (int b = 0; b < count; b++)
             {
-                return;
-            }
-            Vector3Int s = grid.Size;
-            for (int i = 0; i < grid.CellCount; i++)
-            {
-                short owner = grid[i];
-                if (owner < 0)
-                {
-                    continue;
-                }
-                Vector3Int c = grid.Cell(i);
-                if (Differs(c.x + 1, c.y, c.z, owner) || Differs(c.x - 1, c.y, c.z, owner) ||
-                    Differs(c.x, c.y + 1, c.z, owner) || Differs(c.x, c.y - 1, c.z, owner) ||
-                    Differs(c.x, c.y, c.z + 1, owner) || Differs(c.x, c.y, c.z - 1, owner))
-                {
-                    boundaryCells.Add(i);
-                }
+                RefreshBlockOutline(b);
             }
         }
 
-        private bool Differs(int x, int y, int z, short owner) => !grid.InBounds(x, y, z) || grid[grid.Index(x, y, z)] != owner;
+        /// <summary>
+        /// Box and local points of a block's boundary cells (next to empty space or another block): what the fit /
+        /// centring code measures, without walking every cell.
+        /// </summary>
+        private void RefreshBlockOutline(int b)
+        {
+            var min = new Vector3Int(int.MaxValue, int.MaxValue, int.MaxValue);
+            var max = new Vector3Int(int.MinValue, int.MinValue, int.MinValue);
+            outlineScratch.Clear();
+            neighbourScratch.Clear();
+            if (grid != null && blockCells != null)
+            {
+                short owner = (short)b;
+                foreach (int i in blockCells[b])
+                {
+                    Vector3Int c = grid.Cell(i);
+                    // Non-short-circuit | so every side records its neighbour.
+                    if (Side(c.x + 1, c.y, c.z, owner) | Side(c.x - 1, c.y, c.z, owner) |
+                        Side(c.x, c.y + 1, c.z, owner) | Side(c.x, c.y - 1, c.z, owner) |
+                        Side(c.x, c.y, c.z + 1, owner) | Side(c.x, c.y, c.z - 1, owner))
+                    {
+                        min = Vector3Int.Min(min, c);
+                        max = Vector3Int.Max(max, c);
+                        outlineScratch.Add(CellToLocal(c));
+                    }
+                }
+            }
+            blockBoxMin[b] = min;
+            blockBoxMax[b] = max;
+            blockOutlines[b] = outlineScratch.ToArray();
+            outlineScratch.Clear();
+            blockNeighbours[b] = new int[neighbourScratch.Count];
+            neighbourScratch.CopyTo(blockNeighbours[b]);
+            neighbourScratch.Clear();
+        }
+
+        private Vector3 BlockCenter(int b)
+        {
+            List<int> cells = blockCells[b];
+            if (cells.Count == 0)
+            {
+                return Vector3.zero;
+            }
+            Vector3 sum = Vector3.zero;
+            foreach (int i in cells)
+            {
+                sum += CellToLocal(grid.Cell(i));
+            }
+            return sum / cells.Count;
+        }
+
+        /// <summary>True when the cell next door is not <paramref name="owner"/>'s; notes the block there, if any.</summary>
+        private bool Side(int x, int y, int z, short owner)
+        {
+            short other = grid[x, y, z]; // Empty outside the grid.
+            if (other == owner)
+            {
+                return false;
+            }
+            if (other >= 0)
+            {
+                neighbourScratch.Add(other);
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Which blocks count as solid for the seam-closing in <see cref="SurfaceNets"/>: everything not gone yet.
+        /// A copy, so a worker thread can read it while blocks change on the main thread.
+        /// </summary>
+        private bool[] SolidBlocks()
+        {
+            var solid = new bool[phases.Length];
+            for (int b = 0; b < solid.Length; b++)
+            {
+                solid[b] = phases[b] != BlockPhase.Gone;
+            }
+            return solid;
+        }
+
+        /// <summary>
+        /// <paramref name="block"/> is gone: remesh the blocks around it so they no longer reach into its space
+        /// (their surfaces overlap a cell into solid neighbours to close the seams).
+        /// </summary>
+        private void RefreshNeighbours(int block)
+        {
+            if (blockNeighbours == null || grows == null || renderMode != SandRenderMode.Smooth)
+            {
+                return;
+            }
+            float now = Time.time;
+            foreach (int n in blockNeighbours[block])
+            {
+                if (n == block || n >= phases.Length || phases[n] != BlockPhase.Present || collected[n] || blockMeshes.Count <= n ||
+                    blockMeshes[n] == null)
+                {
+                    continue;
+                }
+                Grow g = grows[n];
+                if (g != null)
+                {
+                    g.Applied = 0; // Growing: make sure its last remesh happens after this block is gone.
+                    continue;
+                }
+                // A finished grow job is a full remesh.
+                grows[n] = new Grow { Order = MeshCells(n).ToArray(), Start = now - growDuration, Shown = 0, Applied = 0 };
+            }
+        }
+
 
         /// <summary>
         /// Box around the blocks not collected yet, in this transform's local space (before scale).
@@ -440,17 +954,15 @@ namespace GameKit.Gameplay.Voxel
                 return false;
             }
 
-            // Boundary cells hold every block's outer cells, so their box is the box of what is left.
+            // Boundary cells hold every block's outer cells, so the box of their boxes is the box of what is left.
             var min = new Vector3Int(int.MaxValue, int.MaxValue, int.MaxValue);
             var max = new Vector3Int(int.MinValue, int.MinValue, int.MinValue);
-            foreach (int i in boundaryCells)
+            for (int b = 0; b < blockBoxMin.Length; b++)
             {
-                int owner = grid[i];
-                if (owner >= 0 && (owner >= collected.Length || !collected[owner]))
+                if (!collected[b] && blockBoxMin[b].x <= blockBoxMax[b].x)
                 {
-                    Vector3Int c = grid.Cell(i);
-                    min = Vector3Int.Min(min, c);
-                    max = Vector3Int.Max(max, c);
+                    min = Vector3Int.Min(min, blockBoxMin[b]);
+                    max = Vector3Int.Max(max, blockBoxMax[b]);
                 }
             }
             if (min.x > max.x)
@@ -484,30 +996,10 @@ namespace GameKit.Gameplay.Voxel
         }
 
         /// <summary>
-        /// Touch feedback on the block under the finger: squashes in while pressed / held, springs back (with a small
-        /// overshoot) when released. A tap then plays <see cref="Punch"/> from the squashed size.
+        /// Tap feedback (finger lifted): the block springs out past its size, then settles (it keeps draining).
+        /// With <c>punchOnTap</c> off (default) it just stops any scale tween and drains. No squash on press: shrinking
+        /// an outer block pushed it into the layers and blocks around it.
         /// </summary>
-        public void SetPressed(int block, bool pressed)
-        {
-            if (popTweens == null || block < 0 || block >= popTweens.Length)
-            {
-                return;
-            }
-
-            popTweens[block]?.Kill();
-            float target = pressed ? pressedScale : 1f;
-            if (Mathf.Abs(blockScales[block] - target) < 1e-4f)
-            {
-                blockScales[block] = target;
-                return;
-            }
-            popTweens[block] = DOTween.To(() => blockScales[block], v => blockScales[block] = v, target,
-                    pressed ? pressInTime : pressOutTime)
-                .SetEase(pressed ? Ease.OutQuad : Ease.OutBack)
-                .SetLink(gameObject);
-        }
-
-        /// <summary>Tap feedback: the block squashes in, springs out past its size, then settles (it keeps draining).</summary>
         public void Punch(int block)
         {
             if (popTweens == null || block < 0 || block >= popTweens.Length)
@@ -515,12 +1007,15 @@ namespace GameKit.Gameplay.Voxel
                 return;
             }
 
-            // Starts from the current scale, so a block already squashed by the press springs straight out.
             popTweens[block]?.Kill();
+            popTweens[block] = null;
+            if (!punchOnTap)
+            {
+                return;
+            }
             DG.Tweening.Core.DOGetter<float> get = () => blockScales[block];
             DG.Tweening.Core.DOSetter<float> set = v => blockScales[block] = v;
             popTweens[block] = DOTween.Sequence()
-                .Append(DOTween.To(get, set, punchIn, punchInTime).SetEase(Ease.OutQuad))
                 .Append(DOTween.To(get, set, punchOut, punchOutTime).SetEase(Ease.OutQuad))
                 .Append(DOTween.To(get, set, 1f, punchSettleTime).SetEase(Ease.OutBack))
                 .SetLink(gameObject);
@@ -640,6 +1135,7 @@ namespace GameKit.Gameplay.Voxel
             if (renderMode == SandRenderMode.Smooth)
             {
                 UpdateDrains();
+                UpdateGrows();
                 DrawBlockMeshes();
                 return;
             }
@@ -673,25 +1169,25 @@ namespace GameKit.Gameplay.Voxel
         {
             DestroyBlockMeshes();
             var vertices = new List<Vector3>();
+            var normals = new List<Vector3>();
             var triangles = new List<int>();
+            bool[] solid = SolidBlocks();
             for (int b = 0; b < count; b++)
             {
                 Mesh mesh = null;
-                if (SurfaceNets.Build(grid, b, vertices, triangles, smoothIterations))
+                if (!solid[b])
                 {
-                    for (int i = 0; i < vertices.Count; i++)
-                    {
-                        vertices[i] = (vertices[i] - gridCenter) * grainSize;
-                    }
+                    blockMeshes.Add(null);
+                    continue;
+                }
+                if (SurfaceNets.Build(grid, MeshCells(b), 0, vertices, triangles, SmoothPasses, null, -1, (short)b, solid,
+                        roundShapes))
+                {
+                    ToLocal(vertices, gridCenter, grainSize);
+                    ComputeNormals(vertices, triangles, normals);
                     mesh = new Mesh { name = $"SandBlock_{b}" };
-                    if (vertices.Count > 65000)
-                    {
-                        mesh.indexFormat = IndexFormat.UInt32;
-                    }
-                    mesh.SetVertices(vertices);
-                    mesh.SetTriangles(triangles, 0);
-                    mesh.RecalculateNormals();
-                    mesh.RecalculateBounds();
+                    mesh.MarkDynamic();
+                    Upload(mesh, vertices, normals, triangles);
                 }
                 blockMeshes.Add(mesh);
             }
@@ -764,7 +1260,8 @@ namespace GameKit.Gameplay.Voxel
                 {
                     continue;
                 }
-                // Hidden inner layer; while holding, the one right inside the see-through block shows.
+                // Hidden inner layer (drawn as part of the block around it); while holding, the one right inside the
+                // see-through block shows.
                 if (IsBuried(b) && !(reveal > 0.001f && hiddenUnderParent[b] == ghostBlock))
                 {
                     continue;
@@ -783,9 +1280,59 @@ namespace GameKit.Gameplay.Voxel
                 {
                     surfaceBlock.SetFloat(AlphaId, Mathf.Lerp(1f, ghostAlpha, reveal));
                 }
-                Graphics.DrawMesh(mesh, matrix, ghost ? ghostMaterial : surfaceMaterial, gameObject.layer, null, 0, surfaceBlock,
-                    ShadowCastingMode.Off, false);
+                Graphics.DrawMesh(mesh, matrix, ghost ? ghostMaterial : surfaceMaterial, gameObject.layer, null, 0,
+                    surfaceBlock, ShadowCastingMode.Off, false);
             }
+        }
+
+        /// <summary>
+        /// Cells a block's mesh is built from: its own plus those of every layer hidden inside it. Inner layers take
+        /// cells out of the outer one when a level is baked (often right on its surface); without them the outer
+        /// block would show holes, and drawing the hidden layer there mixes its colour into the outer one.
+        /// </summary>
+        private List<int> MeshCells(int b)
+        {
+            if (childBlocks == null || childBlocks[b] == null)
+            {
+                return blockCells[b];
+            }
+            var cells = new List<int>(blockCells[b]);
+            AddHiddenLayers(b, cells);
+            return cells;
+        }
+
+        private void AddHiddenLayers(int b, List<int> cells)
+        {
+            if (childBlocks == null || childBlocks[b] == null)
+            {
+                return;
+            }
+            foreach (int child in childBlocks[b])
+            {
+                if (!collected[child])
+                {
+                    cells.AddRange(blockCells[child]);
+                    AddHiddenLayers(child, cells);
+                }
+            }
+        }
+
+        /// <summary>
+        /// The block a player sees at a cell: a cell of a hidden layer is drawn as part of the visible block around
+        /// it (<see cref="MeshCells"/>), so a tap there is a tap on that block.
+        /// </summary>
+        public int VisibleBlock(int block)
+        {
+            if (hiddenUnderParent == null || collected == null)
+            {
+                return block;
+            }
+            int guard = 0;
+            while (block >= 0 && block < collected.Length && IsBuried(block) && guard++ < 64)
+            {
+                block = hiddenUnderParent[block];
+            }
+            return block;
         }
 
         private void UpdateDrains()
@@ -795,60 +1342,251 @@ namespace GameKit.Gameplay.Voxel
                 return;
             }
             float now = Time.time;
-            for (int b = 0; b < drains.Length; b++)
+            int first = nextDrainBlock;
+            for (int k = 0; k < drains.Length; k++)
             {
+                int b = (first + k) % drains.Length;
                 Drain d = drains[b];
                 if (d == null || phases[b] != BlockPhase.Draining)
                 {
                     continue;
                 }
 
-                float progress = drainDuration > 0f ? (now - d.Start) / drainDuration : 1f;
-                if (progress >= 1f)
+                float t = drainDuration > 0f ? (now - d.Start) / drainDuration : 1f;
+                if (t >= 1f)
                 {
                     phases[b] = BlockPhase.Gone;
                     drains[b] = null;
+                    RefreshNeighbours(b);
                     continue;
                 }
+                float progress = EaseOut(t);
 
                 int target = Mathf.Clamp((int)(progress * d.Order.Length), 0, d.Order.Length);
-                if (target <= d.Removed || now - d.LastBuild < drainRebuildInterval)
+                if (target <= d.Removed || d.Remeshing || now - d.LastBuild < drainRebuildInterval)
+                {
+                    continue;
+                }
+                RemeshSlot slot = FreeRemeshSlot();
+                if (slot == null)
                 {
                     continue;
                 }
                 for (int i = d.Removed; i < target; i++)
                 {
-                    drainedCells[d.Order[i]] = true;
+                    int cell = d.Order[i];
+                    if (grid[cell] == b)
+                    {
+                        drainedCells[cell] = true;
+                    }
                 }
                 d.Removed = target;
                 d.LastBuild = now;
-                if (!RebuildBlockMesh(b))
-                {
-                    phases[b] = BlockPhase.Gone;
-                    drains[b] = null;
-                }
+                nextDrainBlock = (b + 1) % drains.Length;
+                RemeshAsync(slot, b, d, d.Removed, -1).Forget();
             }
         }
 
-        /// <summary>Remeshes a block without its drained cells. False when nothing is left to draw.</summary>
-        private bool RebuildBlockMesh(int b)
+        /// <summary>Inner blocks filling the outer one: show more of their cells each frame, nearest ones first.</summary>
+        private void UpdateGrows()
         {
+            if (grows == null)
+            {
+                return;
+            }
+            float now = Time.time;
+            for (int b = 0; b < grows.Length; b++)
+            {
+                Grow g = grows[b];
+                if (g == null)
+                {
+                    continue;
+                }
+                int total = g.Order.Length;
+                if (g.Applied >= total)
+                {
+                    grows[b] = null;
+                    continue;
+                }
+                float t = growDuration > 0f ? (now - g.Start) / growDuration : 1f;
+                int target = t >= 1f ? total : g.Shown + (int)(EaseOut(t) * (total - g.Shown));
+                target = Mathf.Max(target, g.Shown);
+                if (target <= g.Shown && g.Shown < total || g.Remeshing)
+                {
+                    continue;
+                }
+                RemeshSlot slot = FreeRemeshSlot();
+                if (slot == null)
+                {
+                    continue;
+                }
+                g.Shown = Mathf.Max(g.Shown, target);
+                RemeshAsync(slot, b, g, 0, g.Shown).Forget();
+            }
+        }
+
+        private static float EaseOut(float t) => 1f - (1f - t) * (1f - t);
+
+        private RemeshSlot FreeRemeshSlot()
+        {
+            foreach (RemeshSlot slot in remeshSlots)
+            {
+                if (!slot.Busy)
+                {
+                    return slot;
+                }
+            }
+            if (remeshSlots.Count >= maxConcurrentRemeshes)
+            {
+                return null;
+            }
+            var created = new RemeshSlot();
+            remeshSlots.Add(created);
+            return created;
+        }
+
+        /// <summary>
+        /// Remeshes a block from Order[<paramref name="from"/>..<paramref name="to"/>) of its drain / grow job on a
+        /// worker thread, then uploads the mesh here. A draining block is marked gone when nothing is left to draw.
+        /// </summary>
+        private async UniTaskVoid RemeshAsync(RemeshSlot slot, int b, MeshJob job, int from, int to)
+        {
+            slot.Busy = true;
+            job.Remeshing = true;
+            int version = buildVersion;
+            VoxelGrid g = grid;
+            Vector3 center = gridCenter;
+            float size = grainSize;
+            int smooth = SmoothPasses;
+            bool round = roundShapes;
+            bool[] solid = SolidBlocks();
+            short self = (short)b;
+            bool ok;
+            try
+            {
+#if UNITY_WEBGL
+                ok = BuildRemesh(slot, g, job.Order, from, to, center, size, smooth, self, solid, round);
+#else
+                ok = await UniTask.RunOnThreadPool(() => BuildRemesh(slot, g, job.Order, from, to, center, size, smooth, self, solid, round), true,
+                    this.GetCancellationTokenOnDestroy());
+#endif
+            }
+            catch (OperationCanceledException)
+            {
+                slot.Busy = false;
+                return;
+            }
+            catch (Exception e)
+            {
+                slot.Busy = false;
+                job.Remeshing = false;
+                Log.Exception(e, this);
+                return;
+            }
+
+            if (this != null && version == buildVersion)
+            {
+                if (job is Drain d)
+                {
+                    ApplyDrain(slot, b, d, ok);
+                }
+                else if (job is Grow grow)
+                {
+                    ApplyGrow(slot, b, grow, ok, to);
+                }
+            }
+            job.Remeshing = false;
+            slot.Busy = false;
+        }
+
+        private void ApplyDrain(RemeshSlot slot, int b, Drain d, bool ok)
+        {
+            if (drains == null || b >= drains.Length || drains[b] != d || phases[b] != BlockPhase.Draining)
+            {
+                return;
+            }
             Mesh mesh = blockMeshes[b];
-            if (mesh == null || !SurfaceNets.Build(grid, b, meshVertices, meshTriangles, smoothIterations, drainedCells))
+            if (!ok || mesh == null)
+            {
+                phases[b] = BlockPhase.Gone;
+                drains[b] = null;
+                RefreshNeighbours(b);
+                return;
+            }
+            Upload(mesh, slot.Vertices, slot.Normals, slot.Triangles);
+        }
+
+        private void ApplyGrow(RemeshSlot slot, int b, Grow grow, bool ok, int shown)
+        {
+            if (grows == null || b >= grows.Length || grows[b] != grow || collected[b])
+            {
+                return;
+            }
+            grow.Applied = shown;
+            if (!ok)
+            {
+                return;
+            }
+            Mesh mesh = blockMeshes[b];
+            if (mesh == null)
+            {
+                mesh = new Mesh { name = $"SandBlock_{b}" };
+                mesh.MarkDynamic();
+                blockMeshes[b] = mesh;
+            }
+            Upload(mesh, slot.Vertices, slot.Normals, slot.Triangles);
+        }
+
+        /// <summary>Worker-thread part of a remesh: only reads the grid and the drain order.</summary>
+        private static bool BuildRemesh(RemeshSlot slot, VoxelGrid g, int[] order, int from, int to, Vector3 center, float size,
+            int smooth, short self, bool[] solid, bool round)
+        {
+            if (!SurfaceNets.Build(g, order, from, slot.Vertices, slot.Triangles, smooth, slot.Workspace, to, self, solid, round))
             {
                 return false;
             }
-            for (int i = 0; i < meshVertices.Count; i++)
-            {
-                meshVertices[i] = (meshVertices[i] - gridCenter) * grainSize;
-            }
-            mesh.Clear();
-            mesh.indexFormat = meshVertices.Count > 65000 ? IndexFormat.UInt32 : IndexFormat.UInt16;
-            mesh.SetVertices(meshVertices);
-            mesh.SetTriangles(meshTriangles, 0);
-            mesh.RecalculateNormals();
-            mesh.RecalculateBounds();
+            ToLocal(slot.Vertices, center, size);
+            ComputeNormals(slot.Vertices, slot.Triangles, slot.Normals);
             return true;
+        }
+
+        private static void ToLocal(List<Vector3> vertices, Vector3 center, float size)
+        {
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                vertices[i] = (vertices[i] - center) * size;
+            }
+        }
+
+        /// <summary>Area-weighted smooth normals, computed by hand so it also runs off the main thread.</summary>
+        private static void ComputeNormals(List<Vector3> vertices, List<int> triangles, List<Vector3> normals)
+        {
+            normals.Clear();
+            for (int i = 0; i < vertices.Count; i++)
+            {
+                normals.Add(Vector3.zero);
+            }
+            for (int t = 0; t < triangles.Count; t += 3)
+            {
+                int a = triangles[t], b = triangles[t + 1], c = triangles[t + 2];
+                Vector3 n = Vector3.Cross(vertices[b] - vertices[a], vertices[c] - vertices[a]);
+                normals[a] += n;
+                normals[b] += n;
+                normals[c] += n;
+            }
+            for (int i = 0; i < normals.Count; i++)
+            {
+                normals[i] = normals[i].normalized;
+            }
+        }
+
+        private static void Upload(Mesh mesh, List<Vector3> vertices, List<Vector3> normals, List<int> triangles)
+        {
+            mesh.Clear();
+            mesh.indexFormat = vertices.Count > 65000 ? IndexFormat.UInt32 : IndexFormat.UInt16;
+            mesh.SetVertices(vertices);
+            mesh.SetNormals(normals);
+            mesh.SetTriangles(triangles, 0, true);
         }
 
         private void DestroyBlockMeshes()

@@ -8,8 +8,7 @@ namespace GameKit.EditorTools.Build
 {
     /// <summary>
     /// Turns the DISABLE_CHEATS define on / off for Android, iOS and Standalone.
-    /// Release builds: disable cheats here, and disable SRDebugger itself in Window/SRDebugger/Settings Window
-    /// (it adds DISABLE_SRDEBUGGER and moves its resources out of the build).
+    /// Release builds: disable cheats here; that compiles out the whole cheat panel (Runtime/Cheat).
     /// </summary>
     public static class CheatDefines
     {
