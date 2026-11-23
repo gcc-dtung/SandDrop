@@ -6,6 +6,9 @@ using GameKit.Core.Foundation.Audio;
 using GameKit.Core.Foundation.Events;
 using GameKit.Core.Foundation.Save;
 using GameKit.Core.Foundation.Scenes;
+using GameKit.Gameplay.Audio;
+using GameKit.Gameplay.Level;
+using GameKit.Gameplay.UI;
 using GameKit.Save;
 using GameKit.UI.Framework;
 using UnityEngine;
@@ -30,6 +33,11 @@ namespace GameKit.App
 
         [Header("UI (in ---- GIAO DIỆN ----)")]
         [SerializeField] private PopupManager popupManager;
+
+        [Header("Gameplay")]
+        [SerializeField] private LevelController levelController;
+        [SerializeField] private LevelHud levelHud;
+        [SerializeField] private SandAudioEvents sandAudio;
 
         public GameServices Services { get; private set; }
 
@@ -113,9 +121,19 @@ namespace GameKit.App
 
         private void InitComponents(GameServices services)
         {
-            // Wire scene components here, e.g.:
-            // [SerializeField] private LevelController levelController;
-            // levelController.Init(services.Config.Level, services.Save);
+            if (sandAudio != null)
+            {
+                sandAudio.Init(services.Audio);
+            }
+
+            if (levelController != null)
+            {
+                levelController.Init(services.Config.levels, services.Save, services.Popups, levelHud);
+            }
+            else
+            {
+                Log.Warning("GameBootstrap", "LevelController is not assigned.", this);
+            }
         }
     }
 }

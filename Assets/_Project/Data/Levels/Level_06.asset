@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef19caa902526324dbd41211f2b71e4e, type: 3}
+  m_Name: Level_06
+  m_EditorClassIdentifier: 
+  gridSize: {x: 44, y: 44, z: 44}
+  grainSize: 0.065
+  palette:
+  - {r: 1, g: 0.3, b: 0.42, a: 1}
+  - {r: 1, g: 0.8, b: 0.2, a: 1}
+  - {r: 0.22, g: 0.82, b: 0.45, a: 1}
+  - {r: 1, g: 0.52, b: 0.12, a: 1}
+  - {r: 0.2, g: 0.58, b: 1, a: 1}
+  blocks:
+  - name: Gift_Bottom_Outer
+    colorIndex: 3
+    parent: -1
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 8, z: 22}
+      Size: {x: 20, y: 16, z: 20}
+  - name: Gift_Bottom_Middle
+    colorIndex: 4
+    parent: 0
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 8, z: 22}
+      Size: {x: 14, y: 11.2, z: 14}
+  - name: Gift_Bottom_Core
+    colorIndex: 0
+    parent: 1
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 8, z: 22}
+      Size: {x: 8.4, y: 6.72, z: 8.4}
+  - name: Gift_Middle_Outer
+    colorIndex: 4
+    parent: -1
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 22.5, z: 22}
+      Size: {x: 15, y: 13, z: 15}
+  - name: Gift_Middle_Middle
+    colorIndex: 0
+    parent: 3
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 22.5, z: 22}
+      Size: {x: 10.5, y: 9.099999, z: 10.5}
+  - name: Gift_Middle_Core
+    colorIndex: 3
+    parent: 4
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 22.5, z: 22}
+      Size: {x: 6.2999997, y: 5.46, z: 6.2999997}
+  - name: Gift_Top_Outer
+    colorIndex: 0
+    parent: -1
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 34, z: 22}
+      Size: {x: 11, y: 10, z: 11}
+  - name: Gift_Top_Middle
+    colorIndex: 3
+    parent: 6
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 34, z: 22}
+      Size: {x: 7.7, y: 7, z: 7.7}
+  - name: Gift_Top_Core
+    colorIndex: 4
+    parent: 7
+    shapes:
+    - Kind: 0
+      Center: {x: 22, y: 34, z: 22}
+      Size: {x: 4.62, y: 4.2, z: 4.62}
+  trayColorQueue: 030000000400000000000000
+  modelRotation: {x: 15, y: 30, z: 0}
+  sourceModelGuid: 
+  bakeResolution: 44
+  bakedCells: 

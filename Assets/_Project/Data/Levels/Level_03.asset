@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef19caa902526324dbd41211f2b71e4e, type: 3}
+  m_Name: Level_03
+  m_EditorClassIdentifier: 
+  gridSize: {x: 44, y: 44, z: 44}
+  grainSize: 0.065
+  palette:
+  - {r: 1, g: 0.3, b: 0.42, a: 1}
+  - {r: 1, g: 0.8, b: 0.2, a: 1}
+  - {r: 0.22, g: 0.82, b: 0.45, a: 1}
+  - {r: 1, g: 0.52, b: 0.12, a: 1}
+  - {r: 0.2, g: 0.58, b: 1, a: 1}
+  blocks:
+  - name: Cone
+    colorIndex: 3
+    parent: -1
+    shapes:
+    - Kind: 4
+      Center: {x: 22, y: 10, z: 22}
+      Size: {x: 18, y: 20, z: 18}
+  - name: Cone_Core
+    colorIndex: 1
+    parent: 0
+    shapes:
+    - Kind: 4
+      Center: {x: 22, y: 11, z: 22}
+      Size: {x: 9, y: 12, z: 9}
+  - name: Scoop_Low
+    colorIndex: 0
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 24, z: 22}
+      Size: {x: 19, y: 19, z: 19}
+  - name: Scoop_Low_Core
+    colorIndex: 1
+    parent: 2
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 24, z: 22}
+      Size: {x: 10, y: 10, z: 10}
+  - name: Scoop_High
+    colorIndex: 4
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 35, z: 22}
+      Size: {x: 15, y: 15, z: 15}
+  - name: Scoop_High_Core
+    colorIndex: 0
+    parent: 4
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 35, z: 22}
+      Size: {x: 8, y: 8, z: 8}
+  - name: Cherry
+    colorIndex: 0
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 41, z: 22}
+      Size: {x: 5, y: 5, z: 5}
+  - name: Wafer_L
+    colorIndex: 3
+    parent: -1
+    shapes:
+    - Kind: 0
+      Center: {x: 17, y: 40, z: 22}
+      Size: {x: 2, y: 8, z: 3}
+  - name: Wafer_R
+    colorIndex: 3
+    parent: -1
+    shapes:
+    - Kind: 0
+      Center: {x: 27, y: 40, z: 22}
+      Size: {x: 2, y: 8, z: 3}
+  - name: Drip_L
+    colorIndex: 4
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 14, y: 18, z: 20}
+      Size: {x: 4, y: 7, z: 4}
+  - name: Drip_R
+    colorIndex: 4
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 30, y: 18, z: 24}
+      Size: {x: 4, y: 7, z: 4}
+  - name: Sprinkle
+    colorIndex: 1
+    parent: -1
+    shapes:
+    - Kind: 1
+      Center: {x: 22, y: 27, z: 13}
+      Size: {x: 5, y: 5, z: 5}
+  trayColorQueue: 04000000000000000300000001000000
+  modelRotation: {x: 15, y: 30, z: 0}
+  sourceModelGuid: 
+  bakeResolution: 44
+  bakedCells: 

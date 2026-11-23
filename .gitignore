@@ -140,7 +140,9 @@ crashlytics-build.properties
 # Rider
 .idea/
 
-# Multi-session workflow (shared via directory junctions, not versioned)
+# Claude Code project files (not versioned)
 /.claude
-/.docs
-/.role
+
+# Third-party extracted assets (local only, not versioned)
+/Assets/_Project/Assets/
+/Assets/_Project/Assets.meta

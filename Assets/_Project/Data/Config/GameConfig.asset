@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: GameConfig
   m_EditorClassIdentifier: 
   targetFrameRate: 60
+  levels: {fileID: 11400000, guid: d901796382073f340bf816ed71287e71, type: 2}
+  autoSaveInterval: 30
+  defaultClickSound: {fileID: 0}
   tweenCapacity: 500
   sequenceCapacity: 150

@@ -41,6 +41,12 @@ namespace GameKit.Cheat
             }
 
             SRDebug.Instance.AddOptionContainer(new GameCheats(bootstrap.Services));
+
+            var level = Object.FindObjectOfType<GameKit.Gameplay.Level.LevelController>();
+            if (level != null)
+            {
+                SRDebug.Instance.AddOptionContainer(new SandCheats(bootstrap.Services, level));
+            }
         }
 
         // ---- Game ----

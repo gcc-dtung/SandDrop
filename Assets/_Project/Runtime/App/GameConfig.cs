@@ -1,3 +1,4 @@
+using GameKit.Gameplay.Level;
 using UnityEngine;
 
 namespace GameKit.App
@@ -12,6 +13,9 @@ namespace GameKit.App
         [Header("Runtime")]
         [Tooltip("Android / iOS default to 30 FPS; 60 feels smooth on most phones.")]
         [Min(15)] public int targetFrameRate = 60;
+
+        [Header("Levels")]
+        public LevelDatabase levels;
 
         [Header("Save")]
         [Tooltip("Seconds between automatic saves when something changed; 0 = only on pause / quit.")]
